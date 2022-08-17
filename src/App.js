@@ -3,7 +3,10 @@ import { Outlet } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Outlet />
+      <Navbar />
+      <div className="w-[85%] mx-auto">
+        <Outlet />
+      </div>
     </div>
   );
 }

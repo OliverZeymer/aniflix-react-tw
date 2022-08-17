@@ -3,12 +3,11 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
-
 const navigation = [
-  { name: "Home", href: "/", current: true },
-  { name: "Change Theme", href: "/", current: false },
-  { name: "Anime List", href: "/", current: false },
-  { name: "Contact Us", href: "/", current: false },
+  { name: "Home", href: "/", current: false },
+  { name: "Change Theme", href: "/theme", current: false },
+  { name: "Anime List", href: "/anime", current: false },
+  { name: "Contact Us", href: "/contact", current: false },
 ];
 
 function classNames(...classes) {
@@ -17,10 +16,10 @@ function classNames(...classes) {
 
 const Navbar = () => {
   return (
-    <Disclosure as="nav" className="border-b-2">
+    <Disclosure as="nav" className="border-b-2 border-primary-color">
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="max-w-full mx-auto px-2 sm:px-4">
             <div className="relative flex items-center justify-between h-20">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -34,18 +33,21 @@ const Navbar = () => {
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-center sm:justify-start">
-                <div className="flex-shrink-0 flex items-center sm:gap-2">
-                  <img
-                    className="block lg:hidden h-8 w-auto"
-                    src="https://media.discordapp.net/attachments/629956796802400257/1009231518109024347/aniflix.png?width=678&height=676"
-                    alt="Workflow"
-                  />
-                  <img
-                    className="hidden lg:block h-14 w-auto"
-                    src="https://media.discordapp.net/attachments/629956796802400257/1009231518109024347/aniflix.png?width=678&height=676"
-                    alt="Workflow"
-                  />
-                  <h1 className="text-2xl">AniFlix</h1>
+                <div className="flex-shrink-0">
+                  <Link className="flex items-center sm:gap-2" to="/">
+                    <img
+                      className="block lg:hidden h-8 w-auto"
+                      src="https://media.discordapp.net/attachments/629956796802400257/1009231518109024347/aniflix.png?width=678&height=676"
+                      alt="Workflow"
+                    />
+
+                    <img
+                      className="hidden lg:block h-14 w-auto"
+                      src="https://media.discordapp.net/attachments/629956796802400257/1009231518109024347/aniflix.png?width=678&height=676"
+                      alt="Workflow"
+                    />
+                    <h1 className="text-2xl text-primary-text">AniFlix</h1>
+                  </Link>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
@@ -54,7 +56,9 @@ const Navbar = () => {
                         key={item.name}
                         to={item.href}
                         className={classNames(
-                          item.current ? "bg-black text-white" : "text-black",
+                          item.current
+                            ? "bg-white text-primary-text"
+                            : "text-primary-text hover:text-white",
                           "px-3 py-2 rounded-md text-md font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
@@ -81,7 +85,7 @@ const Navbar = () => {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src="https://i.pinimg.com/474x/73/70/3f/73703f9f419cf78e96be17618e0a1b87.jpg"
                         alt=""
                       />
                     </Menu.Button>
@@ -98,41 +102,41 @@ const Navbar = () => {
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <Link
-                            to="#"
+                          <a
+                            href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Your Profile
-                          </Link>
+                          </a>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <Link
-                            to="#"
+                          <a
+                            href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Settings
-                          </Link>
+                          </a>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <Link
-                            to="#"
+                          <a
+                            href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Sign out
-                          </Link>
+                          </a>
                         )}
                       </Menu.Item>
                     </Menu.Items>
@@ -146,12 +150,12 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
                 <Disclosure.Button
-                  key={item.name}
+                  kLinky={item.name}
                   as="a"
                   to={item.href}
                   className={classNames(
                     item.current ? "bg-black text-white" : " bg-white",
-                    "block px-3 py-2 rounded-md border-2 text-base font-medium"
+                    "block px-3 py-2 rounded-md border-2  text-base font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}
                 >
