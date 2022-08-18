@@ -25,18 +25,12 @@ const slides = [
 const Slider = () => {
   return (
     <section>
-      <h2 className="text-5xl text-primary-text text-center font-bold">
-        Latest Arrivals:
-      </h2>
+      <h2 className="text-5xl text-primary-text text-center font-bold">Latest Arrivals:</h2>
       <Carousel infiniteLoop interval="3000" autoPlay>
         {slides.map((slide, index) => (
           <div key={index}>
-            <h3
-              className={`text-3xl mt-6 mb-2 text-center font-bold ${slide.color}`}
-            >
-              {slide.title}
-            </h3>
-            <img src={slide.img} className="h-fit" alt={slide.title} />
+            <h3 className={`text-3xl mt-6 mb-2 text-center font-bold ${slide.color}`}>{slide.title}</h3>
+            <img src={slide.img} className="h-fit" alt="Image" />
           </div>
         ))}
       </Carousel>
