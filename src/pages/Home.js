@@ -4,7 +4,8 @@ import ServicesSection from "../templates/ServicesSection";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import useFetch from "../hooks/useFetch";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 const styles = {
   hero: css`
     .slide img {
@@ -63,31 +64,42 @@ const styles = {
   `,
 };
 const Home = () => {
-  const { data, isLoading, error } = useFetch();
+  const themeLS = JSON.parse(window.localStorage.getItem("theme"));
+  const [theme, setTheme] = useState(themeLS);
+  console.log(theme);
   return (
     <>
       <section className="flex flex-col sm:flex-row justify-between my-20">
         <div className="sm:w-2/5">
-          <h1 className="text-5xl pt-4 text-primary-text font-bold">
-            Subscribe for only 8.99$ a month!
-          </h1>
+          <h1 className="heading">Subscribe for only 8.99$ a month!</h1>
           <p className="my-8 opacity-70 font-bold">
             AniFlix is a streaming service that offers all anime series and
             manga you can think off, we will provide the best service for those
             of you who subscribe to us.
           </p>
-          <button className="flex items-center justify-between gap-2 rounded-lg text-xl font-semibold px-6 py-3 border-2 border-primary-color bg-primary-color text-white hover:bg-transparent hover:text-primary-text duration-300">
+          <button className="button">
             Sign Up <BsArrowUpRight className="hover:text-primary-color" />
           </button>
         </div>
-        <img className="sm:h-[80vh]" src="./assets/img/levi.png" alt="" />
+
+        <img
+          className="sm:h-[80vh]"
+          src={
+            theme.primaryColor === "blue"
+              ? "./assets/img/rem.png"
+              : theme.primaryColor === "red"
+              ? "./assets/img/kaneki.png"
+              : theme.textColor === "white"
+              ? "./assets/img/killua.png"
+              : "./assets/img/levi.png"
+          }
+          alt="Landing page"
+        />
       </section>
 
       <section className="my-20">
         <div className="flex justify-between items-center">
-          <h1 className="text-5xl pt-4 text-primary-text font-bold my-6">
-            Why AniFlix is the best choice?
-          </h1>
+          <h1 className="heading my-6">Why AniFlix is the best choice?</h1>
           <p className="w-[30%] font-bold opacity-70">
             Watch this one minute video to find out why you should use AniFlix!
           </p>
@@ -111,12 +123,10 @@ const Home = () => {
       </div>
 
       <section className="my-20 flex flex-col items-center">
-        <h2 className="text-5xl pt-4 text-primary-text font-bold mb-20">
-          Contact us if you have any questions
-        </h2>
-        <button className="flex items-center justify-between gap-2 rounded-lg text-xl font-semibold px-6 py-3 border-2 border-primary-color bg-primary-color text-white hover:bg-transparent hover:text-primary-text duration-300">
+        <h2 className="heading mb-20">Contact us if you have any questions</h2>
+        <Link to="/contact" className="button">
           Contact Us
-        </button>
+        </Link>
       </section>
     </>
   );
