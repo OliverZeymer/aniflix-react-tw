@@ -25,7 +25,11 @@ const Navbar = () => {
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
-                  {open ? <XIcon className="block h-6 w-6" aria-hidden="true" /> : <MenuIcon className="block h-6 w-6" aria-hidden="true" />}
+                  {open ? (
+                    <XIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                  )}
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-center sm:justify-start">
@@ -52,7 +56,9 @@ const Navbar = () => {
                         key={item.name}
                         to={item.href}
                         className={classNames(
-                          item.current ? "bg-white text-primary-text" : "text-primary-text hover:text-white",
+                          item.current
+                            ? "bg-white text-primary-text"
+                            : "text-primary-text hover:text-white",
                           "px-3 py-2 rounded-md text-md font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
@@ -77,7 +83,11 @@ const Navbar = () => {
                   <div>
                     <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
-                      <img className="h-8 w-8 rounded-full" src="https://i.pinimg.com/474x/73/70/3f/73703f9f419cf78e96be17618e0a1b87.jpg" alt="" />
+                      <img
+                        className="h-8 w-8 rounded-full"
+                        src="https://i.pinimg.com/474x/73/70/3f/73703f9f419cf78e96be17618e0a1b87.jpg"
+                        alt=""
+                      />
                     </Menu.Button>
                   </div>
                   <Transition
@@ -92,21 +102,39 @@ const Navbar = () => {
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <a href="#" className={classNames(active ? "bg-gray-100" : "", "block px-4 py-2 text-sm text-gray-700")}>
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
                             Your Profile
                           </a>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a href="#" className={classNames(active ? "bg-gray-100" : "", "block px-4 py-2 text-sm text-gray-700")}>
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
                             Settings
                           </a>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a href="#" className={classNames(active ? "bg-gray-100" : "", "block px-4 py-2 text-sm text-gray-700")}>
+                          <a
+                            href="#"
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
                             Sign out
                           </a>
                         )}
@@ -122,7 +150,7 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navigation.map((item) => (
                 <Disclosure.Button
-                  kLinky={item.name}
+                  key={item.name}
                   as="a"
                   to={item.href}
                   className={classNames(

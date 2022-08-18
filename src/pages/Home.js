@@ -4,6 +4,7 @@ import ServicesSection from "../templates/ServicesSection";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import useFetch from "../hooks/useFetch";
 const styles = {
   hero: css`
     .slide img {
@@ -62,6 +63,7 @@ const styles = {
   `,
 };
 const Home = () => {
+  const { data, isLoading, error } = useFetch();
   return (
     <>
       <section className="flex flex-col sm:flex-row justify-between my-20">
@@ -74,7 +76,7 @@ const Home = () => {
             manga you can think off, we will provide the best service for those
             of you who subscribe to us.
           </p>
-          <button class="flex items-center justify-between gap-2 rounded-lg text-xl font-semibold px-6 py-3 border-2 border-primary-color bg-primary-color text-white hover:bg-transparent hover:text-primary-text duration-300">
+          <button className="flex items-center justify-between gap-2 rounded-lg text-xl font-semibold px-6 py-3 border-2 border-primary-color bg-primary-color text-white hover:bg-transparent hover:text-primary-text duration-300">
             Sign Up <BsArrowUpRight className="hover:text-primary-color" />
           </button>
         </div>
@@ -96,9 +98,9 @@ const Home = () => {
           height="315"
           src="https://www.youtube.com/embed/eeZ1Ufdra0E"
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </section>
 
@@ -112,7 +114,7 @@ const Home = () => {
         <h2 className="text-5xl pt-4 text-primary-text font-bold mb-20">
           Contact us if you have any questions
         </h2>
-        <button class="flex items-center justify-between gap-2 rounded-lg text-xl font-semibold px-6 py-3 border-2 border-primary-color bg-primary-color text-white hover:bg-transparent hover:text-primary-text duration-300">
+        <button className="flex items-center justify-between gap-2 rounded-lg text-xl font-semibold px-6 py-3 border-2 border-primary-color bg-primary-color text-white hover:bg-transparent hover:text-primary-text duration-300">
           Contact Us
         </button>
       </section>

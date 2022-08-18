@@ -8,27 +8,27 @@ const services = [
   },
   {
     title: "High Server Capacity",
-    text: "AniFlix uses high quality servers with high capacity and the least amount of maintenance!",
+    text: "AniFlix uses high quality servers with high capacity and the least amount of maintenance",
     img: "./assets/img/server.png",
   },
   {
     title: "Newest arrivals",
-    text: "AniFlix always has the newest released episodes & seasons of your favorite anime shows!",
+    text: "AniFlix always has the newest released episodes & seasons of your favorite anime shows",
     img: "./assets/img/aot.png",
   },
   {
     title: "Active community",
-    text: "Our community is active and welcoming with over 10.000 memebers already!",
+    text: "Our community is active and welcoming with over 10.000 memebers already",
     img: "./assets/img/community.png",
   },
   {
     title: "MyAnimeList Imports",
-    text: "Import your MyAnimeList on to your AniFlix account to already have a watch list!",
+    text: "Import your MyAnimeList watch list to your AniFlix account to keep track of your anime",
     img: "./assets/img/mal_white.png",
   },
   {
     title: "Family Subscriptions",
-    text: "AniFlix now has a family subscription feature, pay a lower price and link up to 5 accounts!",
+    text: "AniFlix now has a family subscription feature, pay a lower price and link up to 5 accounts",
     img: "./assets/img/family.png",
   },
 ];
@@ -40,7 +40,7 @@ const ServicesSection = () => {
         The services we provide:
       </h2>
       {services.map((service, index) => {
-        return <Service key={index} {...service} />;
+        return <Service key={service.title} {...service} />;
       })}
     </section>
   );
