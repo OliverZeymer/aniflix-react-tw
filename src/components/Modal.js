@@ -76,8 +76,8 @@ const Modal = ({ show, setShow, src }) => {
               >
                 <RiCloseCircleLine
                   color="red"
-                  size="6rem"
-                  className="hover:scale-110 duration-300"
+                  size="4rem"
+                  className="hover:scale-110 duration-300 "
                 />
               </motion.div>
             </button>

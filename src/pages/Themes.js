@@ -1,19 +1,27 @@
 import { setToLS } from "../functions/setToLS";
 import { setColors } from "../functions/setColors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 import ModalButton from "../components/ModalButton";
+import Notification from "../components/Notification";
 const Themes = () => {
   const [modalImg, setModalImg] = useState("");
   const [modalShow, setModalShow] = useState(false);
+  const [notificationShow, setNotificationShow] = useState(false);
+
   return (
     <section className="flex flex-col gap-14 h-fit my-20">
+      <Notification show={notificationShow} setShow={setNotificationShow} />
       <article className="flex flex-col sm:flex-row justify-between pb-16 border-b-2 border-[#334b2f]">
-        <h2 className="heading w-full text-[#42693b]">Default Theme:</h2>
+        <h2 className="heading w-full pt-0 text-[#42693b]">Default Theme:</h2>
         <button
           onClick={() => {
             setColors("", "");
             setToLS("theme", { primaryColor: "", textColor: "" });
+            setNotificationShow(true);
+            setTimeout(() => {
+              setNotificationShow(false);
+            }, 2500);
           }}
           className="button bg-[#334b2f]  border-[#334b2f]"
         >
@@ -22,7 +30,7 @@ const Themes = () => {
       </article>
 
       <article className="flex flex-col sm:flex-row justify-between pb-16 border-b-2 border-blue-500">
-        <h2 className="heading w-full text-[#3494d4]">Blue Theme:</h2>
+        <h2 className="heading w-full pt-0 text-[#3494d4]">Blue Theme:</h2>
         <div className="mr-12">
           <ModalButton
             show={modalShow}
@@ -38,6 +46,10 @@ const Themes = () => {
           onClick={() => {
             setColors("blue", "#3494d4");
             setToLS("theme", { primaryColor: "blue", textColor: "#3494d4" });
+            setNotificationShow(true);
+            setTimeout(() => {
+              setNotificationShow(false);
+            }, 2500);
           }}
           className="button bg-blue-500 border-blue-500 hover:text-[#3494d4]"
         >
@@ -46,7 +58,7 @@ const Themes = () => {
       </article>
 
       <article className="flex flex-col sm:flex-row justify-between pb-16 border-b-2 border-red-500">
-        <h2 className="heading w-full text-[#cf2424]">Red Theme:</h2>
+        <h2 className="heading w-full pt-0 text-[#cf2424]">Red Theme:</h2>
         <div className="mr-12">
           <ModalButton
             show={modalShow}
@@ -62,6 +74,10 @@ const Themes = () => {
           onClick={() => {
             setColors("red", "#cf2424");
             setToLS("theme", { primaryColor: "red", textColor: "#cf2424" });
+            setNotificationShow(true);
+            setTimeout(() => {
+              setNotificationShow(false);
+            }, 2500);
           }}
           className="button bg-red-500 border-red-500 hover:text-[#cf2424]"
         >
@@ -70,7 +86,7 @@ const Themes = () => {
       </article>
 
       <article className="flex flex-col sm:flex-row justify-between pb-16 border-b-2 border-[#afafaf]">
-        <h2 className="heading w-full text-white">Light Theme:</h2>
+        <h2 className="heading w-full pt-0 text-white">Light Theme:</h2>
         <div className="mr-12">
           <ModalButton
             show={modalShow}
@@ -86,6 +102,10 @@ const Themes = () => {
           onClick={() => {
             setColors("#afafaf", "white");
             setToLS("theme", { primaryColor: "#afafaf", textColor: "white" });
+            setNotificationShow(true);
+            setTimeout(() => {
+              setNotificationShow(false);
+            }, 2500);
           }}
           className="button bg-[#afafaf] border-[#afafaf] hover:text-white"
         >

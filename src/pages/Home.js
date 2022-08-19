@@ -138,16 +138,20 @@ const Home = () => {
 
       <section className="my-20 flex flex-col items-center">
         <h2 className="heading mb-20">Contact us if you have any questions</h2>
-        <motion.div
-          whileHover={{
-            scale: 1.1,
-            transition: { duration: 0.1 },
-          }}
-          whileTap={{ scale: 0.9 }}
-          className="button"
-        >
-          <Link to="/contact">Contact Us</Link>
-        </motion.div>
+
+        <Link to="/contact">
+          {" "}
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.1 },
+            }}
+            whileTap={{ scale: 0.9 }}
+            className="button"
+          >
+            Contact Us
+          </motion.div>
+        </Link>
       </section>
     </>
   );

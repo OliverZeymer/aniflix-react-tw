@@ -1,3 +1,17 @@
 .input {
   @apply p-4 w-full rounded-lg bg-black;
 }
+.shake {
+  animation: shake 150ms 2 linear;
+}
+@keyframes shake {
+  0% {
+    transform: translate(10px, 0);
+  }
+  50% {
+    transform: translate(-10px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

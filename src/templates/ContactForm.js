@@ -52,7 +52,7 @@ const ContactForm = () => {
       >
         <div className="relative">
           <input
-            className="input"
+            className={errors.firstname ? "input shake" : "input"}
             {...register("firstname")}
             type="text"
             placeholder="First name"
@@ -62,7 +62,7 @@ const ContactForm = () => {
         </div>
         <div>
           <input
-            className="input"
+            className={errors.lastname ? "input shake" : "input"}
             {...register("lastname")}
             type="text"
             placeholder="Last name"
@@ -72,7 +72,7 @@ const ContactForm = () => {
         </div>
         <div>
           <input
-            className="input"
+            className={errors.email ? "input shake" : "input"}
             {...register("email")}
             placeholder="Email"
             type="email"
@@ -82,7 +82,7 @@ const ContactForm = () => {
         </div>
         <div>
           <input
-            className="input"
+            className={errors.phone ? "input shake" : "input"}
             {...register("phone")}
             type="tel"
             placeholder="Phone number"
@@ -93,7 +93,11 @@ const ContactForm = () => {
         </div>
         <div className="col-start-1 col-end-3">
           <textarea
-            className="input resize-none h-72"
+            className={
+              errors.textarea
+                ? "input shake resize-none h-72"
+                : "input resize-none h-72"
+            }
             {...register("textarea")}
             placeholder="Your message"
           />
