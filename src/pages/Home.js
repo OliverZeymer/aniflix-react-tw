@@ -65,17 +65,15 @@ const styles = {
 };
 const Home = () => {
   const themeLS = JSON.parse(window.localStorage.getItem("theme"));
-  const [theme, setTheme] = useState(themeLS);
-  console.log(theme);
+  const [theme] = useState(themeLS);
   return (
     <>
       <section className="flex flex-col sm:flex-row justify-between my-20">
         <div className="sm:w-2/5">
           <h1 className="heading">Subscribe for only 8.99$ a month!</h1>
           <p className="my-8 opacity-70 font-bold">
-            AniFlix is a streaming service that offers all anime series and
-            manga you can think off, we will provide the best service for those
-            of you who subscribe to us.
+            AniFlix is a streaming service that offers all anime series and manga you can think off, we will provide the best service for those of you
+            who subscribe to us.
           </p>
           <button className="button">
             Sign Up <BsArrowUpRight className="hover:text-primary-color" />
@@ -85,11 +83,11 @@ const Home = () => {
         <img
           className="sm:h-[80vh]"
           src={
-            theme.primaryColor === "blue"
+            theme?.primaryColor === "blue"
               ? "./assets/img/rem.png"
-              : theme.primaryColor === "red"
+              : theme?.primaryColor === "red"
               ? "./assets/img/kaneki.png"
-              : theme.textColor === "white"
+              : theme?.textColor === "white"
               ? "./assets/img/killua.png"
               : "./assets/img/levi.png"
           }
@@ -100,9 +98,7 @@ const Home = () => {
       <section className="my-20">
         <div className="flex justify-between items-center">
           <h1 className="heading my-6">Why AniFlix is the best choice?</h1>
-          <p className="w-[30%] font-bold opacity-70">
-            Watch this one minute video to find out why you should use AniFlix!
-          </p>
+          <p className="w-[30%] font-bold opacity-70">Watch this one minute video to find out why you should use AniFlix!</p>
         </div>
         <iframe
           className="w-full h-[80vh] rounded-sm"

@@ -1,5 +1,5 @@
-import { setToLS } from "../function/setToLS";
-import { setColors } from "../function/setColors";
+import { setToLS } from "../functions/setToLS";
+import { setColors } from "../functions/setColors";
 const Themes = () => {
   return (
     <section className="flex flex-col gap-14 h-fit my-20">

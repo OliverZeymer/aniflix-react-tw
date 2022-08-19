@@ -1,13 +1,15 @@
 import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { setColors } from "./function/setColors";
+import { setColors } from "./functions/setColors";
 function App() {
   const themeLS = JSON.parse(window.localStorage.getItem("theme"));
-  const [theme, setTheme] = useState(themeLS);
+  const [theme] = useState(themeLS);
   useEffect(() => {
     if (theme) {
       setColors(theme.primaryColor, theme.textColor);
+    } else {
+      setColors("", "");
     }
   }, []);
 
