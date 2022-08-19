@@ -147,20 +147,17 @@ const Navbar = () => {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-2 pt-2 pb-3 flex flex-col gap-1 ">
               {navigation.map((item) => (
-                <Disclosure.Button
+                <Link
                   key={item.name}
-                  as="a"
                   to={item.href}
-                  className={classNames(
-                    item.current ? "bg-black text-white" : " bg-transparent",
-                    "block px-3 py-2 rounded-md border-2 w-1/3  text-base font-medium"
-                  )}
+                  className="text-white hover:bg-black
+                    border-2 border-primary-color block px-3 py-2 rounded-md font-medium"
                   aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
-                </Disclosure.Button>
+                </Link>
               ))}
             </div>
           </Disclosure.Panel>

@@ -6,6 +6,7 @@
 /* Import Tailwind Components */
 @import url("./styles/button.css");
 @import url("./styles/heading.css");
+@import url("./styles/input.css");
 /* -------------------------- */
 
 /*      Color Variables       */
@@ -15,3 +16,13 @@
   --primary-background: #19191b;
 }
 /* -------------------------- */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: var(--primary-color);
+  transform-origin: 0%;
+  z-index: 999;
+}

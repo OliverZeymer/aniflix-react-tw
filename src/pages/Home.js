@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { motion } from "framer-motion";
 const styles = {
   hero: css`
     .slide img {
@@ -68,16 +69,31 @@ const Home = () => {
   const [theme] = useState(themeLS);
   return (
     <>
-      <section className="flex flex-col sm:flex-row justify-between my-20">
+      <motion.section
+        initial={{ x: -800, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ type: "spring", duration: 1 }}
+        className="flex flex-col sm:flex-row justify-between my-20"
+      >
         <div className="sm:w-2/5">
-          <h1 className="heading">Subscribe for only 8.99$ a month!</h1>
+          <motion.h2 className="heading">
+            Subscribe for only 8.99$ a month!
+          </motion.h2>
           <p className="my-8 opacity-70 font-bold">
-            AniFlix is a streaming service that offers all anime series and manga you can think off, we will provide the best service for those of you
-            who subscribe to us.
+            AniFlix is a streaming service that offers all anime series and
+            manga you can think off, we will provide the best service for those
+            of you who subscribe to us.
           </p>
-          <button className="button">
+          <motion.button
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.1 },
+            }}
+            whileTap={{ scale: 0.9 }}
+            className="button mx-auto sm:mx-0 mb-12 sm:mb-0"
+          >
             Sign Up <BsArrowUpRight className="hover:text-primary-color" />
-          </button>
+          </motion.button>
         </div>
 
         <img
@@ -93,15 +109,17 @@ const Home = () => {
           }
           alt="Landing page"
         />
-      </section>
+      </motion.section>
 
       <section className="my-20">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-center">
           <h1 className="heading my-6">Why AniFlix is the best choice?</h1>
-          <p className="w-[30%] font-bold opacity-70">Watch this one minute video to find out why you should use AniFlix!</p>
+          <p className="mb-12 sm:mb-0 sm:w-[30%] font-bold opacity-70">
+            Watch this one minute video to find out why you should use AniFlix!
+          </p>
         </div>
         <iframe
-          className="w-full h-[80vh] rounded-sm"
+          className="w-full sm:h-[80vh] rounded-sm"
           width="560"
           height="315"
           src="https://www.youtube.com/embed/eeZ1Ufdra0E"
@@ -120,9 +138,16 @@ const Home = () => {
 
       <section className="my-20 flex flex-col items-center">
         <h2 className="heading mb-20">Contact us if you have any questions</h2>
-        <Link to="/contact" className="button">
-          Contact Us
-        </Link>
+        <motion.div
+          whileHover={{
+            scale: 1.1,
+            transition: { duration: 0.1 },
+          }}
+          whileTap={{ scale: 0.9 }}
+          className="button"
+        >
+          <Link to="/contact">Contact Us</Link>
+        </motion.div>
       </section>
     </>
   );

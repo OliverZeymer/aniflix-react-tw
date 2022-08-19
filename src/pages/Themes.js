@@ -1,10 +1,15 @@
 import { setToLS } from "../functions/setToLS";
 import { setColors } from "../functions/setColors";
+import { useState } from "react";
+import Modal from "../components/Modal";
+import ModalButton from "../components/ModalButton";
 const Themes = () => {
+  const [modalImg, setModalImg] = useState("");
+  const [modalShow, setModalShow] = useState(false);
   return (
     <section className="flex flex-col gap-14 h-fit my-20">
       <article className="flex flex-col sm:flex-row justify-between pb-16 border-b-2 border-[#334b2f]">
-        <h2 className="heading text-[#42693b]">Default Theme:</h2>
+        <h2 className="heading w-full text-[#42693b]">Default Theme:</h2>
         <button
           onClick={() => {
             setColors("", "");
@@ -15,8 +20,20 @@ const Themes = () => {
           Enable
         </button>
       </article>
+
       <article className="flex flex-col sm:flex-row justify-between pb-16 border-b-2 border-blue-500">
-        <h2 className="heading text-[#3494d4]">Blue Theme:</h2>
+        <h2 className="heading w-full text-[#3494d4]">Blue Theme:</h2>
+        <div className="mr-12">
+          <ModalButton
+            show={modalShow}
+            setShow={setModalShow}
+            btnValue="Show Preview"
+            setModal={setModalImg}
+            preview="./assets/img/bluetheme.jpg"
+            color="blue-500"
+            text="[#3494d4]"
+          />
+        </div>
         <button
           onClick={() => {
             setColors("blue", "#3494d4");
@@ -27,8 +44,20 @@ const Themes = () => {
           Enable
         </button>
       </article>
+
       <article className="flex flex-col sm:flex-row justify-between pb-16 border-b-2 border-red-500">
-        <h2 className="heading text-[#cf2424]">Red Theme:</h2>
+        <h2 className="heading w-full text-[#cf2424]">Red Theme:</h2>
+        <div className="mr-12">
+          <ModalButton
+            show={modalShow}
+            setShow={setModalShow}
+            btnValue="Show Preview"
+            setModal={setModalImg}
+            preview="./assets/img/redtheme.jpg"
+            color="red-500"
+            text="[#cf2424]"
+          />
+        </div>
         <button
           onClick={() => {
             setColors("red", "#cf2424");
@@ -39,8 +68,20 @@ const Themes = () => {
           Enable
         </button>
       </article>
+
       <article className="flex flex-col sm:flex-row justify-between pb-16 border-b-2 border-[#afafaf]">
-        <h2 className="heading text-white">Light Theme:</h2>
+        <h2 className="heading w-full text-white">Light Theme:</h2>
+        <div className="mr-12">
+          <ModalButton
+            show={modalShow}
+            setShow={setModalShow}
+            btnValue="Show Preview"
+            setModal={setModalImg}
+            preview="./assets/img/lighttheme.jpg"
+            color="[#afafaf]"
+            text="white"
+          />
+        </div>
         <button
           onClick={() => {
             setColors("#afafaf", "white");
@@ -50,6 +91,7 @@ const Themes = () => {
         >
           Enable
         </button>
+        <Modal show={modalShow} setShow={setModalShow} src={modalImg} />
       </article>
     </section>
   );

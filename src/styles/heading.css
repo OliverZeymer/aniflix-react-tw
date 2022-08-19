@@ -1,3 +1,3 @@
 .heading {
-  @apply text-5xl pt-4 text-primary-text font-bold;
+  @apply text-4xl sm:text-5xl pt-4 text-primary-text font-bold;
 }

@@ -35,8 +35,8 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section className="grid grid-cols-3 auto-rows1fr gap-y-24 my-20">
-      <h2 className="text-5xl pt-4 text-primary-text font-bold capitalize col-start-1 col-end-4 mt-12 text-center">
+    <section className="flex flex-col gap-24 sm:grid sm:grid-cols-3 sm:auto-rows1fr sm:gap-y-24 my-20">
+      <h2 className=" mb-12 sm:mb-0 text-5xl pt-4 text-primary-text font-bold capitalize col-start-1 col-end-4 mt-12 text-center">
         The services we provide:
       </h2>
       {services.map((service, index) => {

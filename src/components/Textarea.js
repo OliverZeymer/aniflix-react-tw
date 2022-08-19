@@ -4,7 +4,7 @@ const Textarea = ({ span, color, label }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [value, setValue] = useState("");
   function focusHandler(event) {
-    if (isFocused && value == "") {
+    if (isFocused && value === "") {
       setIsFocused(!isFocused);
     } else {
       setIsFocused(true);
