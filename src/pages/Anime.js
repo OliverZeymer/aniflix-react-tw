@@ -71,7 +71,7 @@ const Anime = () => {
         </label>
         <select
           onChange={(event) => handleChange(event)}
-          value={orderBy != null ? orderBy : "members"}
+          value={orderBy !== null ? orderBy : "members"}
           id="filter"
           className=" border border-gray-300 bg-[#222527] text-white  text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
         >
@@ -87,7 +87,7 @@ const Anime = () => {
           <button
             onClick={() => {
               window.location.href = `/anime?orderBy=${orderBy}&page=${
-                currentPage != 1 ? currentPage - 1 : 1
+                currentPage !== 1 ? currentPage - 1 : 1
               }`;
             }}
           >
@@ -220,7 +220,7 @@ const Anime = () => {
             onClick={() => {
               window.location.href = `/anime?orderBy=${
                 orderBy ? orderBy : "members"
-              }&page=${currentPage != 1 ? currentPage - 1 : 1}`;
+              }&page=${currentPage !== 1 ? currentPage - 1 : 1}`;
             }}
           >
             <BsFillArrowLeftCircleFill size="40" color="var(--primary-text)" />

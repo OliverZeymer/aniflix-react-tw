@@ -1,12 +1,5 @@
 import useFetch from "../hooks/useFetch";
-import {
-  BsFillPlayFill,
-  BsStarFill,
-  BsFillArrowRightCircleFill,
-  BsFillArrowLeftCircleFill,
-  BsArrowRight,
-  BsSearch,
-} from "react-icons/bs";
+import { BsFillPlayFill, BsStarFill, BsArrowRight } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 
 const queries = new URLSearchParams(window.location.search);
@@ -14,7 +7,7 @@ var searchParams = queries.get("search");
 console.log(searchParams);
 const API_URL = `https://api.jikan.moe/v4/anime?order_by=members&sort=desc&limit=24&q=${searchParams}`;
 const Search = () => {
-  const { data, loading, error } = useFetch(API_URL);
+  const { data } = useFetch(API_URL);
   console.log(data);
   return (
     <>

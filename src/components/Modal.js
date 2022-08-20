@@ -22,6 +22,7 @@ const Modal = ({ show, setShow, src }) => {
     },
   };
 
+  /* eslint-disable */
   const escapeDown = useCallback((event) => {
     if (event.keyCode === 27) {
       setShow(false);
@@ -34,6 +35,8 @@ const Modal = ({ show, setShow, src }) => {
       document.removeEventListener("keydown", escapeDown, false);
     };
   }, []);
+
+  /* eslint-enable */
   return (
     <AnimatePresence>
       {show && (

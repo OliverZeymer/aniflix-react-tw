@@ -1,6 +1,6 @@
 import { setToLS } from "../functions/setToLS";
 import { setColors } from "../functions/setColors";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Modal from "../components/Modal";
 import ModalButton from "../components/ModalButton";
 import Notification from "../components/Notification";

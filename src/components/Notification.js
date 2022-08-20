@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
 import { BsCheckCircle } from "react-icons/bs";
 import { RiCloseCircleLine } from "react-icons/ri";
 const Notification = ({ show, setShow }) => {

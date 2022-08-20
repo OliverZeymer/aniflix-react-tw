@@ -5,7 +5,7 @@ const id = queries.get("id");
 let API_URL = `https://api.jikan.moe/v4/anime/${id}`;
 let API_URL_RECS = `https://api.jikan.moe/v4/anime/${id}/recommendations  `;
 const SingleAnime = () => {
-  const { data, loading, error } = useFetch(API_URL);
+  const { data } = useFetch(API_URL);
   let singleAnime = data.data;
   const { data: recsData } = useFetch(API_URL_RECS);
   return (
