@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import useFetch from "../hooks/useFetch";
 const limit = 24;
 const queries = new URLSearchParams(window.location.search);
