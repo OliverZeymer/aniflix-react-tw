@@ -47,7 +47,7 @@ const ContactForm = () => {
       <h2 className="heading text-center my-12">Contact us</h2>
       <form
         noValidate
-        className="flex flex-col gap-6 sm:grid sm:grid-cols-2 sm:auto-rows-1fr sm:gap-8"
+        className="flex flex-col items-center gap-6 sm:grid sm:grid-cols-2 sm:auto-rows-1fr sm:gap-8"
         onSubmit={handleSubmit(onSubmitHandler)}
       >
         <div className="relative">

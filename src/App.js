@@ -20,7 +20,6 @@ function App() {
 
   return (
     <div className="App">
-      <motion.div className="progress-bar" style={{ scaleX }} />
       <Navbar />
       <div className="w-[85%] mx-auto">
         <Outlet />

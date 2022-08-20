@@ -1,5 +1,5 @@
 .input {
-  @apply p-4 w-full rounded-lg bg-black;
+  @apply p-4 sm:w-full rounded-lg bg-black;
 }
 .shake {
   animation: shake 150ms 2 linear;

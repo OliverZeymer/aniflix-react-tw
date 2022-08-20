@@ -53,7 +53,6 @@ const styles = {
     }
 
     .carousel.carousel-slider {
-      max-width: 50%;
       margin: 0 auto;
       display: flex;
       flex-direction: column-reverse;
@@ -61,6 +60,11 @@ const styles = {
     .carousel.carousel-slider .control-arrow {
       top: 68px;
       bottom: 40px;
+    }
+    @media screen and (min-width: 640px) {
+      .carousel-slider {
+        width: 50% !important;
+      }
     }
   `,
 };
@@ -137,10 +141,11 @@ const Home = () => {
       </div>
 
       <section className="my-20 flex flex-col items-center">
-        <h2 className="heading mb-20">Contact us if you have any questions</h2>
+        <h2 className="heading text-3xl sm:text-5xl mb-20 text-center">
+          Contact us if you have any questions
+        </h2>
 
         <Link to="/contact">
-          {" "}
           <motion.div
             whileHover={{
               scale: 1.1,

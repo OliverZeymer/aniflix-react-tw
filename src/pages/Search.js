@@ -8,110 +8,20 @@ import {
   BsSearch,
 } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
-import { useState } from "react";
-const limit = 24;
+
 const queries = new URLSearchParams(window.location.search);
-let currentPage = parseInt(queries.get("page")) || 1;
-let orderBy = queries.get("orderBy");
-const Anime = () => {
-  const handleChange = (event) => {
-    window.location.href = `?orderBy=${event.target.value}&page=${currentPage}`;
-  };
-  let API_URL = `https://api.jikan.moe/v4/anime?order_by=${
-    orderBy || "members" || (orderBy === "null" && "members")
-  }&sort=desc&limit=${limit}&page=${currentPage}`;
+var searchParams = queries.get("search");
+console.log(searchParams);
+const API_URL = `https://api.jikan.moe/v4/anime?order_by=members&sort=desc&limit=24&q=${searchParams}`;
+const Search = () => {
   const { data, loading, error } = useFetch(API_URL);
-  const [query, setQuery] = useState("");
-  console.log(query);
+  console.log(data);
   return (
     <>
-      <div>
-        <h2 className="text-center heading">Anime</h2>
-      </div>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          window.location.href = `/search?search=${query}`;
-        }}
-        className="sm:w-1/3 mx-auto mt-24"
-      >
-        <label
-          htmlFor="default-search"
-          class="mb-2 text-sm font-medium text-gray-900 sr-only "
-        >
-          Search
-        </label>
-        <div className="relative">
-          <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-            <BsSearch color="gray" size="20" />
-          </div>
-          <input
-            type="search"
-            id="default-search"
-            className="block p-4 outline-none pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 "
-            placeholder="Search Anime..."
-            autoComplete="off"
-            required
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button
-            type="submit"
-            className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
-          >
-            Search
-          </button>
-        </div>
-      </form>
-      <div className="w-full justify-center flex-col mt-12 sm:w-1/6 sm:ml-auto flex items-center">
-        <label
-          htmlFor="filter"
-          className="block mb-2 text-xl font-medium text-white"
-        >
-          Filter by:
-        </label>
-        <select
-          onChange={(event) => handleChange(event)}
-          value={orderBy != null ? orderBy : "members"}
-          id="filter"
-          className=" border border-gray-300 bg-[#222527] text-white  text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
-        >
-          <option value="members">Members</option>
-          <option value="score">Score</option>
-          <option value="favorites">Favorites</option>
-          <option value="episodes">Episodes</option>
-          <option value="start_date">Start Date</option>
-        </select>
-      </div>
-      <ul className="mb-1 flex justify-between px-4 sm:px-0 sm:w-1/6 items-center mx-auto">
-        <li>
-          <button
-            onClick={() => {
-              window.location.href = `/anime?orderBy=${orderBy}&page=${
-                currentPage != 1 ? currentPage - 1 : 1
-              }`;
-            }}
-          >
-            <BsFillArrowLeftCircleFill size="40" color="var(--primary-text)" />
-          </button>
-        </li>
-        <p className="font-semibold">Current Page: {currentPage}</p>
-        <li>
-          <button
-            onClick={() => {
-              window.location.href = `/anime?orderBy=${orderBy}&page=${
-                currentPage + 1
-              }`;
-            }}
-          >
-            <BsFillArrowRightCircleFill size="40" color="var(--primary-text)" />
-          </button>
-        </li>
-      </ul>
-
+      <h2 className="text-center heading mt-6 mb-12 capitalize">
+        Showing results for "{searchParams}"!
+      </h2>
       <section className="sm:grid sm:grid-cols-auto-fit flex flex-col gap-6 w-full h-fit">
-        {loading && <p className="heading">Loading...</p>}
-        {error && <p>{error}</p>}
-        {data.status && <p>{data.message}</p>}
         {data ? (
           data.data?.map((anime) => (
             <article key={anime.mal_id}>
@@ -214,33 +124,8 @@ const Anime = () => {
           <p>No data found</p>
         )}
       </section>
-      <ul className="mt-1 flex justify-between px-4 sm:px-0 sm:w-1/6 items-center mx-auto">
-        <li>
-          <button
-            onClick={() => {
-              window.location.href = `/anime?orderBy=${
-                orderBy ? orderBy : "members"
-              }&page=${currentPage != 1 ? currentPage - 1 : 1}`;
-            }}
-          >
-            <BsFillArrowLeftCircleFill size="40" color="var(--primary-text)" />
-          </button>
-        </li>
-        <p className="font-semibold">Current Page: {currentPage}</p>
-        <li>
-          <button
-            onClick={() => {
-              window.location.href = `/anime?orderBy=${
-                orderBy ? orderBy : "members"
-              }&page=${currentPage + 1}`;
-            }}
-          >
-            <BsFillArrowRightCircleFill size="40" color="var(--primary-text)" />
-          </button>
-        </li>
-      </ul>
     </>
   );
 };
 
-export default Anime;
+export default Search;

@@ -1,0 +1,7 @@
+select {
+  appearance: none;
+  background-image: url("../assets/img/chevron-down.svg");
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 1.5em auto, 100%;
+}

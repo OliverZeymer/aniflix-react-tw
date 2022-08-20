@@ -28,10 +28,10 @@ const Slider = () => {
       <Carousel infiniteLoop interval="3000" autoPlay>
         {slides.map((slide, index) => (
           <div key={slide.title}>
-            <h3 className={`heading text-xl sm:text-4xl ${slide.color}`}>
+            <h3 className={`heading text-2xl sm:text-4xl ${slide.color}`}>
               {slide.title}
             </h3>
-            <img src={slide.img} className="h-fit" alt={slide.title} />
+            <img src={slide.img} className="" alt={slide.title} />
           </div>
         ))}
       </Carousel>

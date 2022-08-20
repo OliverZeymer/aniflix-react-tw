@@ -21,9 +21,9 @@ const accordionData = [
 ];
 const Footer = () => {
   return (
-    <footer className="w-full bg-primary-background text-primary-text py-12 mt-24 transition-all grid auto-cols-1fr ">
+    <footer className="w-full bg-primary-background text-primary-text py-12 mt-24 transition-all flex justify-between">
       <p>&copy; {new Date().getFullYear()}</p>
-      <ul className="accordion">
+      <ul className="accordion flex justify-between w-full">
         {accordionData.map(({ heading, content, href }) => (
           <Accordion
             key={heading}

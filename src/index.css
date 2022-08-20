@@ -10,6 +10,9 @@
 @import url("./styles/notification_bar.css");
 @import url("./styles/scrolling_bar.css");
 @import url("./styles/flip_card.css");
+@import url("./styles/select.css");
+@import url("./styles/loader.css");
+
 /* -------------------------- */
 
 /*      Color Variables       */

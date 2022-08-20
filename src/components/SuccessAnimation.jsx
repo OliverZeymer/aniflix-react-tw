@@ -78,6 +78,7 @@ const styles = {
       color: var(--primary-text);
       margin-top: 0.5rem;
       font-size: 2rem;
+      text-align: center;
     }
     @keyframes stroke {
       100% {
