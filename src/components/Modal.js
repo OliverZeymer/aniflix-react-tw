@@ -46,7 +46,7 @@ const Modal = ({ show, setShow, src, video }) => {
           animate="visible"
           exit="hidden"
           variants={overlayVariants}
-          className="fixed inset-0 backdrop-blur bg-black/75 flex justify-center items-center opacity-100 transition-opacity-500"
+          className="fixed inset-0 backdrop-blur bg-black/75 flex justify-center items-center opacity-100 transition-opacity-500 z-50"
         >
           <motion.div
             role="alertdialog"
