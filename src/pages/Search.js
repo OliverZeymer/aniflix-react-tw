@@ -1,26 +1,37 @@
 import useFetch from "../hooks/useFetch";
 import { BsFillPlayFill, BsStarFill, BsArrowRight } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
-
-const queries = new URLSearchParams(window.location.search);
-var searchParams = queries.get("search");
-const API_URL = `https://api.jikan.moe/v4/anime?order_by=members&sort=desc&limit=24&q=${searchParams}&sfw`;
+import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../components/Loader";
 const Search = () => {
-  const { data } = useFetch(API_URL);
-  const [query, setQuery] = useState(searchParams);
+  const { search } = useParams();
+  const API_URL = `https://api.jikan.moe/v4/anime?order_by=members&sort=desc&limit=24&q=${search}&sfw`;
+  const { data, isLoading } = useFetch(API_URL);
+  const [query, setQuery] = useState(search);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (window.innerWidth >= 640) {
+      // load on desktop
+      document.getElementsByClassName("search")[0].focus();
+    }
+  }, []);
+
   return (
     <>
       <h2 className="text-center heading mt-6 mb-12 capitalize">
-        Showing {data.data?.length} results for "{searchParams}"!
+        Showing {data.data?.length} results for "{search}"
       </h2>
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          window.location.href = `/search?search=${query}`;
+          navigate("/search/" + query);
+          if (query === "") {
+            navigate("/anime/members/1");
+          }
         }}
-        className="sm:w-1/3 mx-auto mt-16 mb-16"
+        className="sm:w-1/3 mx-auto mt-16 mb-16 sm:mb-32"
       >
         <label
           htmlFor="default-search"
@@ -30,34 +41,35 @@ const Search = () => {
         </label>
         <div className="relative">
           <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-            <BsSearch color="gray" size="20" />
+            <BsSearch color="white" size="20" />
           </div>
           <input
             value={query}
             type="search"
             id="default-search"
-            className="block p-4 outline-none pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 "
+            className="search block p-4 outline-none pl-10 w-full text-sm text-white bg-[#222527] rounded-lg border border-primary-color"
             placeholder="Search Anime..."
             autoComplete="off"
-            required
             onChange={(e) => setQuery(e.target.value)}
           />
           <button
             type="submit"
-            className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+            className="text-white absolute right-2.5 bottom-2.5 bg-primary-color focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
           >
             Search
           </button>
         </div>
       </form>
       <section className="sm:grid sm:grid-cols-auto-fit flex flex-col gap-6 w-full h-fit">
-        {data ? (
+        {isLoading ? (
+          <Loader />
+        ) : (
           data.data?.map((anime) => (
             <article key={anime.mal_id}>
               <div
                 className="card cursor-pointer"
                 onClick={() => {
-                  window.location.href = `/singleanime?id=${anime.mal_id}`;
+                  navigate("/singleanime/" + anime.mal_id);
                 }}
               >
                 <div className="card__content">
@@ -149,8 +161,6 @@ const Search = () => {
               </div>
             </article>
           ))
-        ) : (
-          <p>No data found</p>
         )}
       </section>
     </>

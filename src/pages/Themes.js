@@ -12,10 +12,22 @@ const Themes = () => {
   return (
     <section className="flex flex-col gap-14 h-fit my-20">
       <Notification show={notificationShow} setShow={setNotificationShow} />
-      <article className="flex flex-col sm:flex-row justify-between pb-16 border-b-2 border-[#334b2f]">
+      <article className="flex flex-col items-center justify-between pb-16 sm:flex-row  border-b-2 border-blue-500">
         <h2 className="heading w-full pt-0 text-center sm:text-start text-[#42693b]">
           Default Theme:
         </h2>
+        <div className="mr-0 sm:mr-12 mt-6 sm:mt-0">
+          <ModalButton
+            show={modalShow}
+            setShow={setModalShow}
+            btnValue="Show Preview"
+            setModal={setModalImg}
+            preview="./assets/img/defaulttheme.jpg"
+            color="[#334b2f]"
+            text="[#334b2f]"
+            width="w-48"
+          />
+        </div>
         <button
           onClick={() => {
             setColors("", "");
@@ -25,12 +37,11 @@ const Themes = () => {
               setNotificationShow(false);
             }, 2500);
           }}
-          className="button bg-[#334b2f] mx-auto border-[#334b2f] w-48 sm:w-44 flex justify-center mt-8 sm:mt-0 hover:text-[#334b2f] "
+          className="button bg-[#334b2f] mx-auto border-[#334b2f]  w-48 flex justify-center mt-8 sm:mt-0  hover:text-[#334b2f] "
         >
           Enable
         </button>
       </article>
-
       <article className="flex flex-col items-center justify-between pb-16 sm:flex-row  border-b-2 border-blue-500">
         <h2 className="heading w-full pt-0 text-center sm:text-start text-[#3494d4]">
           Blue Theme:
@@ -61,7 +72,6 @@ const Themes = () => {
           Enable
         </button>
       </article>
-
       <article className="flex flex-col items-center sm:flex-row justify-between pb-16 border-b-2 border-red-500">
         <h2 className="heading w-full text-center sm:text-start pt-0 text-[#cf2424]">
           Red Theme:
@@ -92,7 +102,6 @@ const Themes = () => {
           Enable
         </button>
       </article>
-
       <article className="flex flex-col sm:flex-row items-center justify-between pb-16 border-b-2 border-[#afafaf]">
         <h2 className="heading w-full text-center sm:text-start pt-0 text-white">
           Light Theme:

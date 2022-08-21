@@ -20,9 +20,9 @@ root.render(
         <Route path="*" element={<NotFound />} />
         <Route path="/themes" element={<Themes />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/anime" element={<Anime />} />
-        <Route path="/singleanime" element={<SingleAnime />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/anime/:order/:page" element={<Anime />} />
+        <Route path="/singleanime/:id" element={<SingleAnime />} />
+        <Route path="/search/:search" element={<Search />} />
       </Route>
     </Routes>
   </BrowserRouter>

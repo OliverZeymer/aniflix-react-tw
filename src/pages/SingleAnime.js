@@ -1,18 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import Modal from "../components/Modal";
 import ModalButton from "../components/ModalButton";
+import Recommendations from "../components/Recommendations";
+import Streaming from "../components/Streaming";
 import useFetch from "../hooks/useFetch";
-const queries = new URLSearchParams(window.location.search);
-const id = queries.get("id");
-const API_URL = `https://api.jikan.moe/v4/anime/${id}`;
-const API_URL_RECS = `https://api.jikan.moe/v4/anime/${id}/recommendations `;
+
 const SingleAnime = () => {
+  const { id } = useParams();
   const [setModalImg] = useState("");
   const [modalShow, setModalShow] = useState(false);
-  const { data } = useFetch(API_URL);
+  const [showStreaming, setShowStreaming] = useState(false);
+  const { data } = useFetch("https://api.jikan.moe/v4/anime/" + id);
   let singleAnime = data.data;
-  const { data: recsData } = useFetch(API_URL_RECS);
+
+  //scroll to top when params change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setShowStreaming(false);
+  }, [id]);
+
   return (
     <section className="md:max-w-[80%] mx-auto my-24">
       {singleAnime ? (
@@ -35,7 +44,6 @@ const SingleAnime = () => {
                   {singleAnime.type}
                 </p>
               </div>
-
               <p className="capitalize mb-4">
                 <span className="font-semibold">Release :</span>{" "}
                 {singleAnime.season} {singleAnime.year}
@@ -56,6 +64,7 @@ const SingleAnime = () => {
                 <span className="font-semibold">Views :</span>{" "}
                 {singleAnime.members.toLocaleString()}
               </p>
+
               <p className="capitalize">
                 <span className="font-semibold">Studio :</span>{" "}
                 {singleAnime.studios.map((genre) => genre.name)}
@@ -77,6 +86,23 @@ const SingleAnime = () => {
             mx="auto"
             mt="12"
           />
+          <div>
+            <button
+              onClick={() => setShowStreaming(!showStreaming)}
+              className="sm:flex text-4xl sm:gap-4 text-center mx-auto my-8  hover:scale-110 transition-all"
+            >
+              Where to stream
+              <BsChevronDown
+                className={
+                  !showStreaming
+                    ? "transition-transform duration-500 rotate-0 mx-auto sm:mx-0"
+                    : "rotate-180 transition-transform duration-500 mx-auto sm:mx-0"
+                }
+              />
+            </button>
+            {showStreaming && <Streaming id={id} />}
+          </div>
+
           <Modal
             show={modalShow}
             setShow={setModalShow}
@@ -90,32 +116,7 @@ const SingleAnime = () => {
             <h2 className="md:text-4xl text-3xl mb-4 col-start-1 col-end-6">
               Recommendations for you:
             </h2>
-            {recsData.data ? (
-              recsData.data
-                ?.filter((rec, index) => index < 15)
-                .map((anime) => (
-                  <article
-                    key={anime.entry.mal_id}
-                    className="flex flex-col items-center cursor-pointer transform transition duration-200 relative md:p-2 hover:scale-95 hover:text-primary-text"
-                    onClick={() => {
-                      window.location.href = `/singleanime?id=${anime.entry.mal_id}`;
-                    }}
-                  >
-                    <img
-                      className="rounded poster shadow-lg w-[200px] h-[300px]"
-                      src={anime.entry.images.webp.large_image_url}
-                      alt={anime.entry.title}
-                    />
-                    <div className="md:ml-6">
-                      <p className="text-center p-3 text-sm">
-                        {anime.entry.title}
-                      </p>
-                    </div>
-                  </article>
-                ))
-            ) : (
-              <Loader />
-            )}
+            <Recommendations id={id} />
           </section>
         </>
       ) : (

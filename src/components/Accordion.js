@@ -8,7 +8,7 @@ const Accordion = ({ heading, href, content }) => {
     <li className="accordion-item">
       <motion.div
         initial={false}
-        className="flex"
+        className="flex items-center gap-1"
         onClick={() => setIsActive(!isActive)}
       >
         <h3>{heading}</h3>

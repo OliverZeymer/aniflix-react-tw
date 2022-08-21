@@ -8,62 +8,73 @@ import {
   BsSearch,
 } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../components/Loader";
 const limit = 24;
-const queries = new URLSearchParams(window.location.search);
-let currentPage = parseInt(queries.get("page")) || 1;
-let orderBy = queries.get("orderBy");
 const Anime = () => {
-  const handleChange = (event) => {
-    window.location.href = `?orderBy=${
-      event.target.value !== null ? event.target.value : "members"
-    }&page=${currentPage}`;
-  };
-  let API_URL = `https://api.jikan.moe/v4/anime?order_by=${
-    orderBy || "members" || (orderBy === "null" && "members")
-  }&sort=desc&limit=${limit}&page=${currentPage}&sfw`;
-  const { data, loading, error } = useFetch(API_URL);
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+  const handleChange = (event) => {
+    navigate(
+      `/anime/${
+        event.target.value !== null ? event.target.value : "members"
+      }/${page}`
+    );
+  };
+  const { order, page } = useParams();
+  let API_URL = `https://api.jikan.moe/v4/anime?order_by=${
+    order || "members" || (order === "null" && "members")
+  }&sort=desc&limit=${limit}&page=${page}&sfw`;
+  const { data, isLoading, error } = useFetch(API_URL);
+  useEffect(() => {
+    if (window.innerWidth >= 640) {
+      // load on desktop
+      document.getElementsByClassName("search")[0].focus();
+    }
+  }, []);
   return (
     <>
       <div>
-        <h2 className="text-center heading">Anime</h2>
+        <h2 className="mt-6 mb-12 text-center heading">Anime Library</h2>
       </div>
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          window.location.href = `/search?search=${query}`;
+          navigate("/search/" + query);
+          if (query === "") {
+            navigate("/anime/members/1");
+          }
         }}
-        className="sm:w-1/3 mx-auto mt-24"
+        className="sm:w-1/3 mx-auto mb-8 sm:mb-0 mt-16"
       >
         <label
           htmlFor="default-search"
-          class="mb-2 text-sm font-medium text-gray-900 sr-only "
+          className="mb-2 text-sm font-medium text-gray-900 sr-only "
         >
           Search
         </label>
         <div className="relative">
           <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-            <BsSearch color="gray" size="20" />
+            <BsSearch color="white" size="20" />
           </div>
           <input
             type="search"
             id="default-search"
-            className="block p-4 outline-none pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 "
+            className="search block p-4 outline-none pl-10 w-full text-sm text-white bg-[#222527] rounded-lg border border-primary-color"
             placeholder="Search Anime..."
             autoComplete="off"
-            required
             onChange={(e) => setQuery(e.target.value)}
           />
           <button
             type="submit"
-            className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+            className="text-white absolute right-2.5 bottom-2.5 bg-primary-color focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
           >
             Search
           </button>
         </div>
       </form>
-      <div className="w-full justify-center flex-col mt-12 sm:w-1/6 sm:ml-auto flex items-center">
+      <div className="w-full justify-center flex-col sm:w-1/6 sm:ml-auto flex items-center">
         <label
           htmlFor="filter"
           className="block mb-2 text-xl font-medium text-white"
@@ -72,9 +83,9 @@ const Anime = () => {
         </label>
         <select
           onChange={(event) => handleChange(event)}
-          value={orderBy !== null ? orderBy : "members"}
+          value={order !== null ? order : "members"}
           id="filter"
-          className=" border border-gray-300 bg-[#222527] text-white  text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
+          className="border border-gray-300 bg-[#222527] text-white mb-8 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
         >
           <option value="members">Members</option>
           <option value="score">Score</option>
@@ -83,25 +94,31 @@ const Anime = () => {
           <option value="start_date">Start Date</option>
         </select>
       </div>
-      <ul className="mb-1 flex justify-between px-4 sm:px-0 sm:w-1/6 items-center mx-auto">
+      <ul className="mb-1 flex justify-between px-4 sm:px-0 sm:w-1/3 items-center mx-auto">
         <li>
           <button
+            className="hover:scale-125 transition-all"
             onClick={() => {
-              window.location.href = `/anime?orderBy=${
-                orderBy ? orderBy : "members"
-              }&page=${currentPage !== 1 ? currentPage - 1 : 1}`;
+              navigate(
+                `/anime/${order ? order : "members"}/${
+                  page !== 1 ? page - 1 : 1
+                }`
+              );
             }}
           >
             <BsFillArrowLeftCircleFill size="40" color="var(--primary-text)" />
           </button>
         </li>
-        <p className="font-semibold">Current Page: {currentPage}</p>
+        <p className="font-semibold text-center text-2xl">
+          Current Page: {page}
+        </p>
         <li>
           <button
+            className="hover:scale-125 transition-all"
             onClick={() => {
-              window.location.href = `/anime?orderBy=${
-                orderBy ? orderBy : "members"
-              }&page=${currentPage + 1}`;
+              navigate(
+                `/anime/${order ? order : "members"}/${parseInt(page) + 1}`
+              );
             }}
           >
             <BsFillArrowRightCircleFill size="40" color="var(--primary-text)" />
@@ -110,16 +127,17 @@ const Anime = () => {
       </ul>
 
       <section className="sm:grid sm:grid-cols-auto-fit flex flex-col gap-6 w-full h-fit">
-        {loading && <p className="heading">Loading...</p>}
         {error && <p>{error}</p>}
         {data.status && <p>{data.message}</p>}
-        {data ? (
+        {isLoading ? (
+          <Loader />
+        ) : (
           data.data?.map((anime) => (
             <article key={anime.mal_id}>
-              <div
+              <article
                 className="card cursor-pointer"
                 onClick={() => {
-                  window.location.href = `/singleanime?id=${anime.mal_id}`;
+                  navigate("/singleanime/" + anime.mal_id);
                 }}
               >
                 <div className="card__content">
@@ -154,7 +172,7 @@ const Anime = () => {
                           {anime.title_japanese}
                         </h3>
                       </div>
-                      <div className="flex justify-between px-10 mb-3">
+                      <div className="flex justify-between px-4 mb-3">
                         <h4
                           className={
                             anime.score > 9
@@ -174,7 +192,7 @@ const Anime = () => {
                             }
                             size="14"
                           />
-                          {anime.score}
+                          {anime.score.toFixed(2)}
                         </h4>
                         <p className="bg-zinc-900 p-2 rounded-xl text-xl flex items-center">
                           <BsFillPlayFill />{" "}
@@ -208,32 +226,32 @@ const Anime = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </article>
             </article>
           ))
-        ) : (
-          <p>No data found</p>
         )}
       </section>
-      <ul className="mt-1 flex justify-between px-4 sm:px-0 sm:w-1/6 items-center mx-auto">
+      <ul className="mt-2 flex justify-between px-4 sm:px-0 sm:w-1/6 items-center mx-auto">
         <li>
           <button
             onClick={() => {
-              window.location.href = `/anime?orderBy=${
-                orderBy ? orderBy : "members"
-              }&page=${currentPage !== 1 ? currentPage - 1 : 1}`;
+              navigate(
+                `/anime/${order ? order : "members"}/${
+                  page !== 1 ? page - 1 : 1
+                }`
+              );
             }}
           >
             <BsFillArrowLeftCircleFill size="40" color="var(--primary-text)" />
           </button>
         </li>
-        <p className="font-semibold">Current Page: {currentPage}</p>
+        <p className="font-semibold">Current Page: {page}</p>
         <li>
           <button
             onClick={() => {
-              window.location.href = `/anime?orderBy=${
-                orderBy ? orderBy : "members"
-              }&page=${currentPage + 1}`;
+              navigate(
+                `/anime/${order ? order : "members"}/${parseInt(page) + 1}`
+              );
             }}
           >
             <BsFillArrowRightCircleFill size="40" color="var(--primary-text)" />

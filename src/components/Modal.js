@@ -67,15 +67,13 @@ const Modal = ({ show, setShow, src, video }) => {
             )}
             {video && (
               <iframe
-                width="100%"
-                height="700"
                 src={video}
                 title="YouTube video player"
-                frameborder="0"
-                className={`shadow-xl rounded-lg select-none`}
+                frameBorder="0"
+                className={`sm:h-[700px] sm:w-full shadow-xl rounded-lg select-none`}
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay;"
-                autoplay="1"
-                allowfullscreen
+                autoPlay="1"
+                allowFullScreen
               ></iframe>
             )}
             <button

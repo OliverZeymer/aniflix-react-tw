@@ -16,7 +16,9 @@ const ModalButton = ({
         className={`button w-fit bg-${color} ${width} mx-${mx} mt-${mt} border-${color} hover:text-${text} `}
         onClick={function () {
           setShow(!show);
-          setModal(preview);
+          {
+            preview && setModal(preview);
+          }
         }}
       >
         {btnValue}
