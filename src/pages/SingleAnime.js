@@ -8,7 +8,7 @@ const id = queries.get("id");
 const API_URL = `https://api.jikan.moe/v4/anime/${id}`;
 const API_URL_RECS = `https://api.jikan.moe/v4/anime/${id}/recommendations `;
 const SingleAnime = () => {
-  const [modalImg, setModalImg] = useState("");
+  const [setModalImg] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const { data } = useFetch(API_URL);
   let singleAnime = data.data;
