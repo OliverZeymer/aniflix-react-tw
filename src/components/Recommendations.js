@@ -1,9 +1,9 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
 const Recommendations = ({ id }) => {
   const API_URL = `https://api.jikan.moe/v4/anime/${id}/recommendations`;
-  const { data, isLoading } = useFetch(API_URL);
+  const { data } = useFetch(API_URL);
   const navigate = useNavigate();
   return (
     <>

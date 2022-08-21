@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Loader from "./Loader";
 
@@ -12,7 +10,12 @@ const Streaming = ({ id }) => {
         <Loader />
       ) : (
         data.data?.map((stream) => (
-          <a className="text-center text-3xl" href={stream.url} target="_blank">
+          <a
+            className="text-center text-3xl"
+            href={stream.url}
+            target="_blank"
+            rel="noreferrer"
+          >
             <p className="mb-4 font-semibold underline underline-offset-2 hover:scale-110 transition-all">
               {stream.name}
             </p>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import Modal from "../components/Modal";
 import ModalButton from "../components/ModalButton";
