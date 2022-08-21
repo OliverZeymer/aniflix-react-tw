@@ -44,6 +44,7 @@ const Themes = () => {
             preview="./assets/img/bluetheme.jpg"
             color="blue-500"
             text="[#3494d4]"
+            width="w-48"
           />
         </div>
         <button
@@ -74,6 +75,7 @@ const Themes = () => {
             preview="./assets/img/redtheme.jpg"
             color="red-500"
             text="[#cf2424]"
+            width="w-48"
           />
         </div>
         <button
@@ -104,6 +106,7 @@ const Themes = () => {
             preview="./assets/img/lighttheme.jpg"
             color="[#afafaf]"
             text="white"
+            width="w-48"
           />
         </div>
         <button
