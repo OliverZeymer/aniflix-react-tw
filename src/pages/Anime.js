@@ -15,14 +15,15 @@ let currentPage = parseInt(queries.get("page")) || 1;
 let orderBy = queries.get("orderBy");
 const Anime = () => {
   const handleChange = (event) => {
-    window.location.href = `?orderBy=${event.target.value}&page=${currentPage}`;
+    window.location.href = `?orderBy=${
+      event.target.value !== null ? event.target.value : "members"
+    }&page=${currentPage}`;
   };
   let API_URL = `https://api.jikan.moe/v4/anime?order_by=${
     orderBy || "members" || (orderBy === "null" && "members")
-  }&sort=desc&limit=${limit}&page=${currentPage}`;
+  }&sort=desc&limit=${limit}&page=${currentPage}&sfw`;
   const { data, loading, error } = useFetch(API_URL);
   const [query, setQuery] = useState("");
-  console.log(query);
   return (
     <>
       <div>
@@ -86,9 +87,9 @@ const Anime = () => {
         <li>
           <button
             onClick={() => {
-              window.location.href = `/anime?orderBy=${orderBy}&page=${
-                currentPage !== 1 ? currentPage - 1 : 1
-              }`;
+              window.location.href = `/anime?orderBy=${
+                orderBy ? orderBy : "members"
+              }&page=${currentPage !== 1 ? currentPage - 1 : 1}`;
             }}
           >
             <BsFillArrowLeftCircleFill size="40" color="var(--primary-text)" />
@@ -98,9 +99,9 @@ const Anime = () => {
         <li>
           <button
             onClick={() => {
-              window.location.href = `/anime?orderBy=${orderBy}&page=${
-                currentPage + 1
-              }`;
+              window.location.href = `/anime?orderBy=${
+                orderBy ? orderBy : "members"
+              }&page=${currentPage + 1}`;
             }}
           >
             <BsFillArrowRightCircleFill size="40" color="var(--primary-text)" />

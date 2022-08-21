@@ -1,19 +1,55 @@
 import useFetch from "../hooks/useFetch";
 import { BsFillPlayFill, BsStarFill, BsArrowRight } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
+import { useState } from "react";
+import { BsSearch } from "react-icons/bs";
 
 const queries = new URLSearchParams(window.location.search);
 var searchParams = queries.get("search");
-console.log(searchParams);
-const API_URL = `https://api.jikan.moe/v4/anime?order_by=members&sort=desc&limit=24&q=${searchParams}`;
+const API_URL = `https://api.jikan.moe/v4/anime?order_by=members&sort=desc&limit=24&q=${searchParams}&sfw`;
 const Search = () => {
   const { data } = useFetch(API_URL);
-  console.log(data);
+  const [query, setQuery] = useState(searchParams);
   return (
     <>
       <h2 className="text-center heading mt-6 mb-12 capitalize">
-        Showing results for "{searchParams}"!
+        Showing {data.data?.length} results for "{searchParams}"!
       </h2>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          window.location.href = `/search?search=${query}`;
+        }}
+        className="sm:w-1/3 mx-auto mt-16 mb-16"
+      >
+        <label
+          htmlFor="default-search"
+          className="mb-2 text-sm font-medium text-gray-900 sr-only "
+        >
+          Search
+        </label>
+        <div className="relative">
+          <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+            <BsSearch color="gray" size="20" />
+          </div>
+          <input
+            value={query}
+            type="search"
+            id="default-search"
+            className="block p-4 outline-none pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 "
+            placeholder="Search Anime..."
+            autoComplete="off"
+            required
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+          >
+            Search
+          </button>
+        </div>
+      </form>
       <section className="sm:grid sm:grid-cols-auto-fit flex flex-col gap-6 w-full h-fit">
         {data ? (
           data.data?.map((anime) => (

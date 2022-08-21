@@ -1,10 +1,15 @@
+import { useState } from "react";
 import Loader from "../components/Loader";
+import Modal from "../components/Modal";
+import ModalButton from "../components/ModalButton";
 import useFetch from "../hooks/useFetch";
 const queries = new URLSearchParams(window.location.search);
 const id = queries.get("id");
-let API_URL = `https://api.jikan.moe/v4/anime/${id}`;
-let API_URL_RECS = `https://api.jikan.moe/v4/anime/${id}/recommendations  `;
+const API_URL = `https://api.jikan.moe/v4/anime/${id}`;
+const API_URL_RECS = `https://api.jikan.moe/v4/anime/${id}/recommendations `;
 const SingleAnime = () => {
+  const [setModalImg] = useState("");
+  const [modalShow, setModalShow] = useState(false);
   const { data } = useFetch(API_URL);
   let singleAnime = data.data;
   const { data: recsData } = useFetch(API_URL_RECS);
@@ -24,7 +29,7 @@ const SingleAnime = () => {
               </h2>
               <div className="md:flex mb-4">
                 <h3 className="text-3xl md:text-4xl font-semibold">
-                  {singleAnime.title_english}
+                  {singleAnime.title_english || singleAnime.title}
                 </h3>
                 <p className=" hidden sm:block text-lg ml-4 mt-1">
                   {singleAnime.type}
@@ -57,6 +62,26 @@ const SingleAnime = () => {
               </p>
             </div>
           </div>
+          <ModalButton
+            show={modalShow}
+            setShow={setModalShow}
+            btnValue={
+              singleAnime.title_english + " Trailer" ||
+              singleAnime.title + " Trailer" ||
+              singleAnime.title_japanese + " Trailer"
+            }
+            setModal={setModalImg}
+            preview="./assets/img/bluetheme.jpg"
+            color="primary-color"
+            text="primary-text"
+            mx="auto"
+            mt="12"
+          />
+          <Modal
+            show={modalShow}
+            setShow={setModalShow}
+            video={singleAnime.trailer.embed_url}
+          />
           <div className="mt-20">
             <h4 className="md:text-4xl text-3xl mb-4">Synopsis</h4>
             <p className="">{singleAnime.synopsis}</p>
