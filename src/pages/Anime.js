@@ -87,7 +87,7 @@ const Anime = () => {
           id="filter"
           className="border border-gray-300 bg-[#222527] text-white mb-8 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
         >
-          <option value="members">Members</option>
+          <option value="members">Viewers</option>
           <option value="score">Score</option>
           <option value="favorites">Favorites</option>
           <option value="episodes">Episodes</option>
@@ -101,7 +101,7 @@ const Anime = () => {
             onClick={() => {
               navigate(
                 `/anime/${order ? order : "members"}/${
-                  page !== 1 ? page - 1 : 1
+                  page >= 2 ? page - 1 : 1
                 }`
               );
             }}
@@ -192,7 +192,7 @@ const Anime = () => {
                             }
                             size="14"
                           />
-                          {anime.score.toFixed(2)}
+                          {anime.score ? anime.score.toFixed(2) : "?"}
                         </h4>
                         <p className="bg-zinc-900 p-2 rounded-xl text-xl flex items-center">
                           <BsFillPlayFill />{" "}
