@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BsChevronDown } from "react-icons/bs";
-import { Link } from "react-router-dom";
-const Accordion = ({ heading, href, content }) => {
+const Accordion = ({ heading, content }) => {
   const [isActive, setIsActive] = useState(false);
   return (
-    <li className="accordion-item">
+    <li className="border-b-2 border-primary-color cursor-pointer pt-8 pb-4">
       <motion.div
-        initial={false}
-        className="flex items-center gap-1"
         onClick={() => setIsActive(!isActive)}
+        initial={false}
+        className="flex items-center justify-between"
       >
-        <h3>{heading}</h3>
+        <h3 className="text-xl font-semibold">{heading}</h3>
         <BsChevronDown
           className={
             isActive ? "rotate-180 duration-500" : "rotate-0 duration-500"
@@ -20,7 +19,7 @@ const Accordion = ({ heading, href, content }) => {
       </motion.div>
       <AnimatePresence initial={false}>
         {isActive && (
-          <motion.section
+          <motion.article
             key="content"
             initial="collapsed"
             animate="open"
@@ -29,19 +28,18 @@ const Accordion = ({ heading, href, content }) => {
               open: { opacity: 1, height: "auto" },
               collapsed: { opacity: 0, height: 0 },
             }}
-            transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
-            className="accordion-content"
+            transition={{
+              duration: 0.4,
+              ease: [0.04, 0.62, 0.23, 0.98],
+            }}
+            className="accordion-contentflex flex-col justify-between"
           >
-            <>
-              <Link
-                to={{
-                  pathname: href,
-                }}
-              >
-                {content}
-              </Link>
-            </>
-          </motion.section>
+            {content.map((item) => (
+              <p key={item} className="text-lg mt-4">
+                {item}
+              </p>
+            ))}
+          </motion.article>
         )}
       </AnimatePresence>
     </li>
