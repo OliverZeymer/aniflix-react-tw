@@ -1,9 +1,9 @@
 const Loader = () => {
   return (
-    <div className="text-center mt-32">
+    <div className="text-center mt-32 h-screen">
       <div role="status">
         <svg
-          className="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-primary-text"
+          className="inline mr-2 w-32 h-32 text-gray-200 animate-spin dark:text-gray-600 fill-primary-text"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

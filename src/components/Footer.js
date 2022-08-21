@@ -1,16 +1,14 @@
-import Accordion from "./FooterAccordion";
+import Accordion from "./Accordion";
 
 const accordionData = [
   {
     heading: "Navigation",
-    content:
-      "Non odit magnam dolorum. Et odio et maxime consequuntur provident. Error eaque est dolor et qui. Ex odit doloremque consequatur quis. Eaque et pariatur dolores. Magni in quasi dolor repudiandae explicabo.",
+    content: "Content",
     href: "/contact",
   },
   {
     heading: "Can I upgrade my license?",
-    content:
-      "Quos quam ipsam consequatur consequatur et distinctio. Facere vel ut dolorem. Quam quo neque quos voluptates cupiditate sit quae.",
+    content: "Content",
     href: "/theme",
   },
   {
@@ -21,9 +19,8 @@ const accordionData = [
 ];
 const Footer = () => {
   return (
-    <footer className="w-full bg-primary-background text-primary-text py-12 mt-24 transition-all flex justify-between">
-      <p>&copy; {new Date().getFullYear()}</p>
-      <ul className="accordion flex justify-between w-full">
+    <footer className=" px-12 w-full bg-primary-background text-primary-text py-12 mt-24 transition-all flex flex-col gap-6 justify-between">
+      <ul className="select-none cursor-pointer accordion flex justify-between w-full">
         {accordionData.map(({ heading, content, href }) => (
           <Accordion
             key={heading}
@@ -33,6 +30,7 @@ const Footer = () => {
           />
         ))}
       </ul>
+      <p>&copy; {new Date().getFullYear()}</p>
     </footer>
   );
 };

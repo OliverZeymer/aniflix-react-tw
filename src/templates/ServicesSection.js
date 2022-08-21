@@ -2,9 +2,9 @@ import Service from "../components/Service";
 
 const services = [
   {
-    title: "Full HD Streaming",
-    text: "We offer Full HD Streaming with fast load times!",
-    img: "./assets/img/hd_white.png",
+    title: "High Performance",
+    text: "AniFlix is built on top of the React framework, which means we use the latest technologies to ensure that our website is fast and responsive.",
+    img: "./assets/img/react.svg",
   },
   {
     title: "High Server Capacity",

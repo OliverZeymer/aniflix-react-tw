@@ -4,7 +4,7 @@ import ServicesSection from "../templates/ServicesSection";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
 const styles = {
@@ -71,6 +71,7 @@ const styles = {
 const Home = () => {
   const themeLS = JSON.parse(window.localStorage.getItem("theme"));
   const [theme] = useState(themeLS);
+  const navigate = useNavigate();
   return (
     <>
       <motion.section
@@ -81,14 +82,16 @@ const Home = () => {
       >
         <div className="sm:w-2/5">
           <motion.h2 className="heading">
-            Subscribe for only 8.99$ a month!
+            AniFlix - The anime library for all your needs
           </motion.h2>
           <p className="my-8 opacity-70 font-bold">
-            AniFlix is a streaming service that offers all anime series and
-            manga you can think off, we will provide the best service for those
-            of you who subscribe to us.
+            AniFlix is a library that offers all anime series and manga you can
+            think off, we will provide the best possible service for our users.
           </p>
           <motion.button
+            onClick={() => {
+              navigate("/anime/members/1");
+            }}
             whileHover={{
               scale: 1.1,
               transition: { duration: 0.1 },
@@ -96,7 +99,8 @@ const Home = () => {
             whileTap={{ scale: 0.9 }}
             className="button mx-auto sm:mx-0 mb-12 sm:mb-0"
           >
-            Sign Up <BsArrowUpRight className="hover:text-primary-color" />
+            Take me there
+            <BsArrowUpRight className="hover:text-primary-color" />
           </motion.button>
         </div>
 
@@ -123,10 +127,10 @@ const Home = () => {
           </p>
         </div>
         <iframe
-          className="w-full sm:h-[80vh] rounded-sm"
+          className="w-full sm:h-[80vh] rounded-sm select-none"
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/eeZ1Ufdra0E"
+          src="https://www.youtube.com/embed/LHXLQeBB9kA"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
