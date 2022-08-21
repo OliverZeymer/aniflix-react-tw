@@ -1,36 +1,64 @@
 import Accordion from "./Accordion";
+import { BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 
 const accordionData = [
   {
     heading: "Navigation",
-    content: "Content",
-    href: "/contact",
+    content: ["Home", "About", "Contact"],
   },
   {
-    heading: "Can I upgrade my license?",
-    content: "Content",
-    href: "/theme",
+    heading: "Terms & Privacy",
+    content: ["Content", "More Content"],
   },
   {
-    heading: "Do you provide email support if I need help?",
-    content: "contact",
+    heading: "List of credits",
+    content: ["Github", "React"],
     href: "/contact",
   },
 ];
 const Footer = () => {
   return (
-    <footer className=" px-12 w-full bg-primary-background text-primary-text py-12 mt-24 transition-all flex flex-col gap-6 justify-between">
-      <ul className="select-none cursor-pointer accordion flex justify-between w-full">
-        {accordionData.map(({ heading, content, href }) => (
-          <Accordion
-            key={heading}
-            heading={heading}
-            content={content}
-            href={href}
-          />
+    <footer className="bg-black px-12 w-full bg-primary-background text-primary-text py-12 mt-24 transition-all">
+      <div className="flex gap-4">
+        <a
+          className="footerElement__txt"
+          href="https://twitter.com"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <BsTwitter />
+        </a>
+        <a
+          className="footerElement__txt"
+          href="https://youtube.com"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <BsFacebook />
+        </a>
+        <a
+          className="footerElement__txt"
+          href="https://instagram.com"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <BsInstagram />
+        </a>
+        <a
+          className="footerElement__txt"
+          href="https://github.com"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <BsGithub />
+        </a>
+      </div>
+      <ul className="select-none flex flex-col">
+        {accordionData.map(({ heading, content }) => (
+          <Accordion key={heading} heading={heading} content={content} />
         ))}
       </ul>
-      <p>&copy; {new Date().getFullYear()}</p>
+      <p className="mt-16">AniFlix &copy; {new Date().getFullYear()}</p>
     </footer>
   );
 };

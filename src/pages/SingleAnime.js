@@ -75,9 +75,9 @@ const SingleAnime = () => {
             show={modalShow}
             setShow={setModalShow}
             btnValue={
-              singleAnime.title_english + " Trailer" ||
-              singleAnime.title + " Trailer" ||
-              singleAnime.title_japanese + " Trailer"
+              singleAnime.title_english
+                ? "Watch " + singleAnime.title_english + " Trailer"
+                : "Watch " + singleAnime.title + " Trailer"
             }
             setModal={setModalImg}
             preview="./assets/img/bluetheme.jpg"
@@ -86,10 +86,10 @@ const SingleAnime = () => {
             mx="auto"
             mt="12"
           />
-          <div>
+          <div className="mx-auto">
             <button
               onClick={() => setShowStreaming(!showStreaming)}
-              className="sm:flex text-4xl sm:gap-4 text-center mx-auto my-8  hover:scale-110 transition-all"
+              className="flex items-center text-4xl sm:gap-4 text-center mx-auto my-8 hover:scale-110 transition-all"
             >
               Where to stream
               <BsChevronDown
@@ -112,12 +112,7 @@ const SingleAnime = () => {
             <h4 className="md:text-4xl text-3xl mb-4">Synopsis</h4>
             <p className="">{singleAnime.synopsis}</p>
           </div>
-          <section className="my-32 flex flex-col items-center md:grid md:grid-cols-4 lg:grid-cols-5 gap-6">
-            <h2 className="md:text-4xl text-3xl mb-4 col-start-1 col-end-6">
-              Recommendations for you:
-            </h2>
-            <Recommendations id={id} />
-          </section>
+          <Recommendations id={id} />
         </>
       ) : (
         <Loader />

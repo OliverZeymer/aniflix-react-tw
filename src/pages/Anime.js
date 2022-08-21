@@ -204,11 +204,13 @@ const Anime = () => {
                   <div className="card__back bg-[#222527] h-full rounded-t-lg flex flex-col justify-between items-center rounded-b-sm">
                     <div className="mt-8">
                       {anime.title_english ? (
-                        <h2 className="mb-4 text-3xl">{anime.title_english}</h2>
+                        <h2 className="mb-4 font-semibold text-3xl">
+                          {anime.title_english}
+                        </h2>
                       ) : (
                         <h2 className="mb-4 text-3xl">{anime.title}</h2>
                       )}
-                      <p className="overflow-hidden h-48 fade-out">
+                      <p className="overflow-hidden h-48 px-1 fade-out">
                         {anime.synopsis}
                       </p>
                     </div>
@@ -234,10 +236,16 @@ const Anime = () => {
       <ul className="mt-2 flex justify-between px-4 sm:px-0 sm:w-1/6 items-center mx-auto">
         <li>
           <button
+            className="hover:scale-125 transition-all"
             onClick={() => {
+              window.scrollTo({
+                top: 100,
+                left: 100,
+                behavior: "smooth",
+              });
               navigate(
                 `/anime/${order ? order : "members"}/${
-                  page !== 1 ? page - 1 : 1
+                  page >= 2 ? page - 1 : 1
                 }`
               );
             }}
@@ -248,7 +256,13 @@ const Anime = () => {
         <p className="font-semibold">Current Page: {page}</p>
         <li>
           <button
+            className="hover:scale-125 transition-all"
             onClick={() => {
+              window.scrollTo({
+                top: 100,
+                left: 100,
+                behavior: "smooth",
+              });
               navigate(
                 `/anime/${order ? order : "members"}/${parseInt(page) + 1}`
               );

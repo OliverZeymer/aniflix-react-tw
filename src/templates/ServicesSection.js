@@ -18,7 +18,7 @@ const services = [
   },
   {
     title: "Active community",
-    text: "Our community is active and welcoming with over 10.000 memebers already",
+    text: "Our community is active and welcoming with over 10,000 memebers already",
     img: "./assets/img/community.png",
   },
   {
