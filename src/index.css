@@ -20,6 +20,5 @@
   --primary-color: #334b2f;
   --primary-text: #42693b;
   --primary-background: #19191b;
-  --primary-darker: hsl(from var(--primary-color) h s calc(l - 5%));
 }
 /* -------------------------- */
