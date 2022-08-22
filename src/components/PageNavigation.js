@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const PageNavigation = ({ page, order }) => {
   const navigate = useNavigate();
   return (
-    <ul className="flex justify-center mt-8">
+    <ul className="flex justify-center mt-8 select-none">
       {page > 2 && (
         <li
           className="h-12 flex items-center justify-center w-12  rounded-full px-5 py-4 cursor-pointer"

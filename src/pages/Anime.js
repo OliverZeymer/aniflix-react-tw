@@ -1,4 +1,5 @@
 import useFetch from "../hooks/useFetch";
+import { motion } from "framer-motion";
 import {
   BsFillPlayFill,
   BsStarFill,
@@ -36,6 +37,7 @@ const Anime = () => {
     order || "members" || (order === "null" && "members")
   }&sort=desc&limit=${limit}&status=${status}&page=${page}&sfw`;
   const { data, isLoading, error } = useFetch(API_URL);
+  console.log(data);
   useEffect(() => {
     if (window.innerWidth >= 640) {
       // load on desktop
@@ -55,7 +57,7 @@ const Anime = () => {
             navigate("/anime/members/1");
           }
         }}
-        className="sm:w-1/3 mx-auto mb-8 sm:mb-0 mt-16"
+        className="sm:w-1/3 mx-auto mb-8 sm:mb-2 mt-16"
       >
         <label
           htmlFor="default-search"
@@ -77,7 +79,7 @@ const Anime = () => {
           />
           <button
             type="submit"
-            className="text-white absolute right-2.5 bottom-2.5 bg-primary-color focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+            className="absolute right-2.5 bottom-2.5 bg-primary-color hover:bg-transparent hover:text-primary-text border border-primary-color font-medium rounded-lg transition-all duration-300 text-sm px-4 py-2"
           >
             Search
           </button>
@@ -95,7 +97,7 @@ const Anime = () => {
             onChange={(event) => setStatus(event.target.value)}
             value={status !== null ? status : "completed"}
             id="filter"
-            className="border border-gray-300 bg-[#222527] text-white mb-8 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
+            className="border border-gray-300 bg-[#222527] text-white mb-4 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
           >
             <option value="complete">Complete</option>
             <option value="airing">Airing</option>
@@ -113,20 +115,22 @@ const Anime = () => {
             onChange={(event) => handleChange(event)}
             value={order !== null ? order : "members"}
             id="filter"
-            className="border border-gray-300 bg-[#222527] text-white mb-8 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
+            className="border border-gray-300 bg-[#222527] text-white mb-4 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
           >
             <option value="members">Viewers</option>
             <option value="score">Score</option>
-            <option value="favorites">Favorites</option>
             <option value="episodes">Episodes</option>
-            <option value="start_date">Start Date</option>
           </select>
         </div>
       </div>
       <ul className="mb-1 flex justify-between px-4 sm:px-0 sm:w-1/3 items-center mx-auto">
         <li>
-          <button
-            className="hover:scale-125 transition-all"
+          <motion.button
+            whileHover={{
+              scale: 1.2,
+              transition: { duration: 0.3 },
+            }}
+            whileTap={{ scale: 0.9 }}
             onClick={() => {
               navigate(
                 `/anime/${order ? order : "members"}/${
@@ -136,14 +140,18 @@ const Anime = () => {
             }}
           >
             <BsFillArrowLeftCircleFill size="40" color="var(--primary-text)" />
-          </button>
+          </motion.button>
         </li>
         <p className="font-semibold text-center text-2xl">
           Current Page: {page}
         </p>
         <li>
-          <button
-            className="hover:scale-125 transition-all"
+          <motion.button
+            whileHover={{
+              scale: 1.2,
+              transition: { duration: 0.3 },
+            }}
+            whileTap={{ scale: 0.9 }}
             onClick={() => {
               navigate(
                 `/anime/${order ? order : "members"}/${parseInt(page) + 1}`
@@ -151,7 +159,7 @@ const Anime = () => {
             }}
           >
             <BsFillArrowRightCircleFill size="40" color="var(--primary-text)" />
-          </button>
+          </motion.button>
         </li>
       </ul>
       <section className="sm:grid sm:grid-cols-auto-fit flex flex-col gap-6 w-full h-fit">
@@ -203,9 +211,9 @@ const Anime = () => {
                       <div className="flex justify-between px-4 mb-3">
                         <h4
                           className={
-                            anime.score > 9
+                            anime.score >= 9
                               ? "text-purple-500 bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
-                              : anime.score > 8
+                              : anime.score >= 8
                               ? "text-green-500 bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex  items-center"
                               : "text-white bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
                           }
@@ -220,8 +228,13 @@ const Anime = () => {
                             }
                             size="14"
                           />
+
                           {anime.score ? anime.score.toFixed(2) : "?"}
                         </h4>
+                        <p className="bg-zinc-900 px-1 py-2 rounded-xl text-sm text-center m-auto flex items-center gap-1">
+                          <BiUser />
+                          {anime.members.toLocaleString()}
+                        </p>
                         <p className="bg-zinc-900 p-2 rounded-xl text-xl flex items-center">
                           <BsFillPlayFill />{" "}
                           {anime.episodes ? anime.episodes : "?"}
@@ -249,8 +262,7 @@ const Anime = () => {
                       <div className="flex justify-between items-center w-full">
                         <p>Year: {anime.year ? anime.year : "????"}</p>
                         <p className="flex items-center gap-1">
-                          <BiUser />
-                          {anime.members.toLocaleString()}
+                          {anime.type === "TV" ? "Series" : anime.type}
                         </p>
                       </div>
                     </div>
