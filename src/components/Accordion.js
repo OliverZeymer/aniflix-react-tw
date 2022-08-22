@@ -27,7 +27,7 @@ const Accordion = ({ heading, content }) => {
             className="accordion-contentflex flex-col justify-between"
           >
             {content.map((item) => (
-              <p key={item} className="text-lg mt-4">
+              <p key={item} className="text-lg">
                 {item}
               </p>
             ))}
