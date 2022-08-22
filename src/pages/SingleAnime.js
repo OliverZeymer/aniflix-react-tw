@@ -19,7 +19,6 @@ const SingleAnime = () => {
     window.scrollTo(0, 0);
     setShowOpenings(false);
   }, [id]);
-  console.log(singleAnime);
   return (
     <section className="md:max-w-[80%] mx-auto my-24">
       {singleAnime ? (

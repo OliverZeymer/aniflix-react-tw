@@ -2,7 +2,6 @@ import useFetch from "../hooks/useFetch";
 import Loader from "../components/Loader";
 const Openings = ({ id }) => {
   const { data } = useFetch(`https://api.jikan.moe/v4/anime/${id}/videos`);
-  console.log(data);
   return (
     <section className="flex flex-col items-center">
       {data?.data ? (

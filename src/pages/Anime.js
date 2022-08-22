@@ -37,7 +37,6 @@ const Anime = () => {
     order || "members" || (order === "null" && "members")
   }&sort=desc&limit=${limit}&status=${status}&page=${page}&sfw`;
   const { data, isLoading, error } = useFetch(API_URL);
-  console.log(data);
   useEffect(() => {
     if (window.innerWidth >= 640) {
       // load on desktop
