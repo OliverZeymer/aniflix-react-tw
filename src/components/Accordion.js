@@ -5,9 +5,17 @@ const Accordion = ({ heading, content }) => {
   const [isActive, setIsActive] = useState(false);
   return (
     <li className="border-b-2 border-primary-color cursor-pointer pt-8 pb-4">
-      <motion.div onClick={() => setIsActive(!isActive)} initial={false} className="flex items-center justify-between">
+      <motion.div
+        onClick={() => setIsActive(!isActive)}
+        initial={false}
+        className="flex items-center justify-between"
+      >
         <h3 className="text-xl font-semibold">{heading}</h3>
-        <BsChevronDown className={isActive ? "rotate-180 duration-500" : "rotate-0 duration-500"} />
+        <BsChevronDown
+          className={
+            isActive ? "rotate-180 duration-500" : "rotate-0 duration-500"
+          }
+        />
       </motion.div>
       <AnimatePresence initial={false}>
         {isActive && (
