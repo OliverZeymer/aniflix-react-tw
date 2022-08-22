@@ -6,8 +6,16 @@ import { BsSearch } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 const Search = () => {
+  var limit = 20;
+  if (window.innerWidth >= 1400) {
+    limit = 20;
+  } else if (window.innerWidth >= 1900) {
+    limit = 24;
+  } else {
+    limit = 10;
+  }
   const { search } = useParams();
-  const API_URL = `https://api.jikan.moe/v4/anime?order_by=members&sort=desc&limit=24&q=${search}&sfw`;
+  const API_URL = `https://api.jikan.moe/v4/anime?order_by=members&sort=desc&limit=${limit}&q=${search}&sfw`;
   const { data, isLoading } = useFetch(API_URL);
   const [query, setQuery] = useState(search);
   const navigate = useNavigate();
@@ -33,10 +41,7 @@ const Search = () => {
         }}
         className="sm:w-1/3 mx-auto mt-16 mb-16 sm:mb-32"
       >
-        <label
-          htmlFor="default-search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only "
-        >
+        <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only ">
           Search
         </label>
         <div className="relative">
@@ -114,21 +119,11 @@ const Search = () => {
                               : "text-white bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
                           }
                         >
-                          <BsStarFill
-                            color={
-                              anime.score > 9
-                                ? "#974EDD"
-                                : anime.score > 8
-                                ? "#22C55E"
-                                : "white"
-                            }
-                            size="14"
-                          />
+                          <BsStarFill color={anime.score > 9 ? "#974EDD" : anime.score > 8 ? "#22C55E" : "white"} size="14" />
                           {anime.score}
                         </h4>
                         <p className="bg-zinc-900 p-2 rounded-xl text-xl flex items-center">
-                          <BsFillPlayFill />{" "}
-                          {anime.episodes ? anime.episodes : "?"}
+                          <BsFillPlayFill /> {anime.episodes ? anime.episodes : "?"}
                         </p>
                       </div>
                     </article>
@@ -140,9 +135,7 @@ const Search = () => {
                       ) : (
                         <h2 className="mb-4 text-3xl">{anime.title}</h2>
                       )}
-                      <p className="overflow-hidden h-48 fade-out">
-                        {anime.synopsis}
-                      </p>
+                      <p className="overflow-hidden h-48 fade-out">{anime.synopsis}</p>
                     </div>
                     <button className="border-2 border-white rounded-full py-2 px-4 flex text-3xl items-center gap-1">
                       Read More <BsArrowRight />

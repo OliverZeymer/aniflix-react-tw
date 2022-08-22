@@ -4,8 +4,15 @@ import { BiUser } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
-const limit = 20;
 const Anime = () => {
+  var limit = 20;
+  if (window.innerWidth >= 1400) {
+    limit = 20;
+  } else if (window.innerWidth >= 1900) {
+    limit = 24;
+  } else {
+    limit = 10;
+  }
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const handleChange = (event) => {
