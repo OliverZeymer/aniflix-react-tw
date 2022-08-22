@@ -1,26 +1,15 @@
 import useFetch from "../hooks/useFetch";
-import {
-  BsFillPlayFill,
-  BsStarFill,
-  BsFillArrowRightCircleFill,
-  BsFillArrowLeftCircleFill,
-  BsArrowRight,
-  BsSearch,
-} from "react-icons/bs";
+import { BsFillPlayFill, BsStarFill, BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill, BsArrowRight, BsSearch } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../components/Loader";
-const limit = 24;
+const limit = 20;
 const Anime = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const handleChange = (event) => {
-    navigate(
-      `/anime/${
-        event.target.value !== null ? event.target.value : "members"
-      }/${page}`
-    );
+    navigate(`/anime/${event.target.value !== null ? event.target.value : "members"}/${page}`);
   };
   const { order, page } = useParams();
   let API_URL = `https://api.jikan.moe/v4/anime?order_by=${
@@ -48,10 +37,7 @@ const Anime = () => {
         }}
         className="sm:w-1/3 mx-auto mb-8 sm:mb-0 mt-16"
       >
-        <label
-          htmlFor="default-search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only "
-        >
+        <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only ">
           Search
         </label>
         <div className="relative">
@@ -75,10 +61,7 @@ const Anime = () => {
         </div>
       </form>
       <div className="w-full justify-center flex-col sm:w-1/6 sm:ml-auto flex items-center">
-        <label
-          htmlFor="filter"
-          className="block mb-2 text-xl font-medium text-white"
-        >
+        <label htmlFor="filter" className="block mb-2 text-xl font-medium text-white">
           Filter by:
         </label>
         <select
@@ -99,26 +82,18 @@ const Anime = () => {
           <button
             className="hover:scale-125 transition-all"
             onClick={() => {
-              navigate(
-                `/anime/${order ? order : "members"}/${
-                  page >= 2 ? page - 1 : 1
-                }`
-              );
+              navigate(`/anime/${order ? order : "members"}/${page >= 2 ? page - 1 : 1}`);
             }}
           >
             <BsFillArrowLeftCircleFill size="40" color="var(--primary-text)" />
           </button>
         </li>
-        <p className="font-semibold text-center text-2xl">
-          Current Page: {page}
-        </p>
+        <p className="font-semibold text-center text-2xl">Current Page: {page}</p>
         <li>
           <button
             className="hover:scale-125 transition-all"
             onClick={() => {
-              navigate(
-                `/anime/${order ? order : "members"}/${parseInt(page) + 1}`
-              );
+              navigate(`/anime/${order ? order : "members"}/${parseInt(page) + 1}`);
             }}
           >
             <BsFillArrowRightCircleFill size="40" color="var(--primary-text)" />
@@ -182,21 +157,11 @@ const Anime = () => {
                               : "text-white bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
                           }
                         >
-                          <BsStarFill
-                            color={
-                              anime.score > 9
-                                ? "#974EDD"
-                                : anime.score > 8
-                                ? "#22C55E"
-                                : "white"
-                            }
-                            size="14"
-                          />
+                          <BsStarFill color={anime.score > 9 ? "#974EDD" : anime.score > 8 ? "#22C55E" : "white"} size="14" />
                           {anime.score ? anime.score.toFixed(2) : "?"}
                         </h4>
                         <p className="bg-zinc-900 p-2 rounded-xl text-xl flex items-center">
-                          <BsFillPlayFill />{" "}
-                          {anime.episodes ? anime.episodes : "?"}
+                          <BsFillPlayFill /> {anime.episodes ? anime.episodes : "?"}
                         </p>
                       </div>
                     </article>
@@ -204,15 +169,11 @@ const Anime = () => {
                   <div className="card__back bg-[#222527] h-full rounded-t-lg flex flex-col justify-between items-center rounded-b-sm">
                     <div className="mt-8">
                       {anime.title_english ? (
-                        <h2 className="mb-4 font-semibold text-3xl">
-                          {anime.title_english}
-                        </h2>
+                        <h2 className="mb-4 font-semibold text-3xl">{anime.title_english}</h2>
                       ) : (
                         <h2 className="mb-4 text-3xl">{anime.title}</h2>
                       )}
-                      <p className="overflow-hidden h-48 px-1 fade-out">
-                        {anime.synopsis}
-                      </p>
+                      <p className="overflow-hidden h-48 px-1 fade-out">{anime.synopsis}</p>
                     </div>
                     <button className="border-2 border-white rounded-full py-2 px-4 flex text-3xl items-center gap-1">
                       Read More <BsArrowRight />
@@ -233,7 +194,7 @@ const Anime = () => {
           ))
         )}
       </section>
-      <ul className="mt-2 flex justify-between px-4 sm:px-0 sm:w-1/6 items-center mx-auto">
+      <ul className="mt-2 flex justify-between px-4 sm:px-0 sm:w-1/3 items-center mx-auto">
         <li>
           <button
             className="hover:scale-125 transition-all"
@@ -243,11 +204,7 @@ const Anime = () => {
                 left: 100,
                 behavior: "smooth",
               });
-              navigate(
-                `/anime/${order ? order : "members"}/${
-                  page >= 2 ? page - 1 : 1
-                }`
-              );
+              navigate(`/anime/${order ? order : "members"}/${page >= 2 ? page - 1 : 1}`);
             }}
           >
             <BsFillArrowLeftCircleFill size="40" color="var(--primary-text)" />
@@ -263,9 +220,7 @@ const Anime = () => {
                 left: 100,
                 behavior: "smooth",
               });
-              navigate(
-                `/anime/${order ? order : "members"}/${parseInt(page) + 1}`
-              );
+              navigate(`/anime/${order ? order : "members"}/${parseInt(page) + 1}`);
             }}
           >
             <BsFillArrowRightCircleFill size="40" color="var(--primary-text)" />

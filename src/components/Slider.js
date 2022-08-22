@@ -44,7 +44,7 @@ const Slider = () => {
             >
               {slide.title}
             </h3>
-            <img src={slide.img} className="" alt={slide.title} />
+            <img alt="slide" src={slide.img} />
           </div>
         ))}
       </Carousel>
