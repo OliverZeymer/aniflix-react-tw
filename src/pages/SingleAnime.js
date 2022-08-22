@@ -1,34 +1,31 @@
 import { useEffect, useState } from "react";
-import { BsChevronDown } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import Modal from "../components/Modal";
 import ModalButton from "../components/ModalButton";
 import Recommendations from "../components/Recommendations";
-import Streaming from "../components/Streaming";
 import useFetch from "../hooks/useFetch";
-
+import { BsChevronDown } from "react-icons/bs";
+import Openings from "../components/Openings";
 const SingleAnime = () => {
   const { id } = useParams();
   const [setModalImg] = useState("");
   const [modalShow, setModalShow] = useState(false);
-  const [showStreaming, setShowStreaming] = useState(false);
-  const { data } = useFetch("https://api.jikan.moe/v4/anime/" + id);
+  const [showOpenings, setShowOpenings] = useState(false);
+  const { data } = useFetch(`https://api.jikan.moe/v4/anime/${id}/full`);
   let singleAnime = data.data;
-
   //scroll to top when params change
   useEffect(() => {
     window.scrollTo(0, 0);
-    setShowStreaming(false);
+    setShowOpenings(false);
   }, [id]);
-
   return (
     <section className="md:max-w-[80%] mx-auto my-24">
       {singleAnime ? (
         <>
           <div className="md:flex justify-center md:flex-row flex-col md:text-left text-center">
             <img
-              className="mx-auto md:mx-0 w-60 rounded"
+              className="mx-auto md:mx-0 mb-4 sm:mb-0 w-80 rounded"
               src={singleAnime.images.webp.large_image_url}
               alt={singleAnime.title_english}
             />
@@ -65,12 +62,21 @@ const SingleAnime = () => {
                 {singleAnime.members.toLocaleString()}
               </p>
 
-              <p className="capitalize">
+              <p className="capitalize mb-4">
                 <span className="font-semibold">Studio :</span>{" "}
                 {singleAnime.studios.map((genre) => genre.name)}
               </p>
+              <p className="mb-4">
+                <span className="font-semibold">Popularity Rank :</span>{" "}
+                {singleAnime.popularity.toLocaleString()}
+              </p>
+              <p>
+                <span className="font-semibold ">Score Rank :</span>{" "}
+                {singleAnime.rank.toLocaleString()}
+              </p>
             </div>
           </div>
+
           <ModalButton
             show={modalShow}
             setShow={setModalShow}
@@ -87,22 +93,29 @@ const SingleAnime = () => {
             mt="12"
           />
           <div className="mx-auto">
-            <button
-              onClick={() => setShowStreaming(!showStreaming)}
-              className="flex items-center text-4xl sm:gap-4 text-center mx-auto my-8 hover:scale-110 transition-all"
-            >
-              Where to stream
-              <BsChevronDown
-                className={
-                  !showStreaming
-                    ? "transition-transform duration-500 rotate-0 mx-auto sm:mx-0"
-                    : "rotate-180 transition-transform duration-500 mx-auto sm:mx-0"
-                }
-              />
-            </button>
-            {showStreaming && <Streaming id={id} />}
+            <h2 className="text-4xl text-center mt-16 mb-8">
+              Where to stream:
+            </h2>
+            {singleAnime.streaming ? (
+              singleAnime.streaming?.map((stream) => (
+                <a
+                  key={stream.name}
+                  className="text-center text-3xl"
+                  href={stream.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <p className="mb-4 font-semibold underline underline-offset-2 hover:scale-110 transition-all">
+                    {stream.name}
+                  </p>
+                </a>
+              ))
+            ) : (
+              <p className="text-center text-lg">
+                No streaming available for this anime.
+              </p>
+            )}
           </div>
-
           <Modal
             show={modalShow}
             setShow={setModalShow}
@@ -112,6 +125,22 @@ const SingleAnime = () => {
             <h4 className="md:text-4xl text-3xl mb-4">Synopsis</h4>
             <p className="">{singleAnime.synopsis}</p>
           </div>
+          <button
+            onClick={() => setShowOpenings(!showOpenings)}
+            className="flex items-center mb-6 mt-24 mx-auto"
+          >
+            <h3 className=" text-2xl sm:text-4xl">Opening/Ending Songs</h3>
+            <BsChevronDown
+              className={
+                showOpenings
+                  ? "transition-all rotate-180 duration-300"
+                  : "transition-all rotate-0 duration-300"
+              }
+              size="30"
+            />
+          </button>
+
+          {showOpenings && <Openings id={id} />}
           <Recommendations id={id} />
         </>
       ) : (

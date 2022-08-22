@@ -128,12 +128,10 @@ const Home = () => {
         </div>
         <iframe
           className="w-full sm:h-[80vh] rounded-sm select-none"
-          width="560"
-          height="315"
           src="https://www.youtube.com/embed/LHXLQeBB9kA"
           title="YouTube video player"
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
       </section>
