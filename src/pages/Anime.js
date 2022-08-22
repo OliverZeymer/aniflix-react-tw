@@ -22,6 +22,7 @@ const Anime = () => {
     limit = 10;
   }
   const [query, setQuery] = useState("");
+  const [status, setStatus] = useState("");
   const navigate = useNavigate();
   const handleChange = (event) => {
     navigate(
@@ -33,7 +34,7 @@ const Anime = () => {
   const { order, page } = useParams();
   let API_URL = `https://api.jikan.moe/v4/anime?order_by=${
     order || "members" || (order === "null" && "members")
-  }&sort=desc&limit=${limit}&page=${page}&sfw`;
+  }&sort=desc&limit=${limit}&status=${status}&page=${page}&sfw`;
   const { data, isLoading, error } = useFetch(API_URL);
   useEffect(() => {
     if (window.innerWidth >= 640) {
@@ -82,25 +83,45 @@ const Anime = () => {
           </button>
         </div>
       </form>
-      <div className="w-full justify-center flex-col sm:w-1/6 sm:ml-auto flex items-center">
-        <label
-          htmlFor="filter"
-          className="block mb-2 text-xl font-medium text-white"
-        >
-          Filter by:
-        </label>
-        <select
-          onChange={(event) => handleChange(event)}
-          value={order !== null ? order : "members"}
-          id="filter"
-          className="border border-gray-300 bg-[#222527] text-white mb-8 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
-        >
-          <option value="members">Viewers</option>
-          <option value="score">Score</option>
-          <option value="favorites">Favorites</option>
-          <option value="episodes">Episodes</option>
-          <option value="start_date">Start Date</option>
-        </select>
+      <div className="w-full justify-center flex-col sm:flex-row gap-2 flex items-center sm:w-1/3 sm:ml-auto">
+        <div className="w-full flex flex-col items-center sm:block">
+          <label
+            htmlFor="filter"
+            className="mb-2 text-xl font-medium text-white"
+          >
+            Status
+          </label>
+          <select
+            onChange={(event) => setStatus(event.target.value)}
+            value={status !== null ? status : "completed"}
+            id="filter"
+            className="border border-gray-300 bg-[#222527] text-white mb-8 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
+          >
+            <option value="complete">Complete</option>
+            <option value="airing">Airing</option>
+            <option value="upcoming">Upcoming</option>
+          </select>
+        </div>
+        <div className="w-full flex flex-col items-center sm:block">
+          <label
+            htmlFor="filter"
+            className="mb-2 text-xl font-medium text-white"
+          >
+            Filter
+          </label>
+          <select
+            onChange={(event) => handleChange(event)}
+            value={order !== null ? order : "members"}
+            id="filter"
+            className="border border-gray-300 bg-[#222527] text-white mb-8 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
+          >
+            <option value="members">Viewers</option>
+            <option value="score">Score</option>
+            <option value="favorites">Favorites</option>
+            <option value="episodes">Episodes</option>
+            <option value="start_date">Start Date</option>
+          </select>
+        </div>
       </div>
       <ul className="mb-1 flex justify-between px-4 sm:px-0 sm:w-1/3 items-center mx-auto">
         <li>

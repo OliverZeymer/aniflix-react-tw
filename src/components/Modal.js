@@ -91,7 +91,7 @@ const Modal = ({ show, setShow, src, video }) => {
               >
                 <RiCloseCircleLine
                   color="red"
-                  size="4rem"
+                  size="2rem"
                   className="hover:scale-110 duration-300 "
                 />
               </motion.div>

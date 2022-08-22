@@ -11,6 +11,7 @@ const PageNavigation = ({ page, order }) => {
             navigate(
               `/anime/${order ? order : "members"}/${parseInt(page) - 2}`
             );
+            window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
           {parseInt(page) - 2}
@@ -23,6 +24,7 @@ const PageNavigation = ({ page, order }) => {
             navigate(
               `/anime/${order ? order : "members"}/${parseInt(page) - 1}`
             );
+            window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
           {parseInt(page) - 1}
@@ -36,6 +38,7 @@ const PageNavigation = ({ page, order }) => {
         className="h-12 flex items-center justify-center w-12  px-5 py-3 rounded-full cursor-pointer"
         onClick={() => {
           navigate(`/anime/${order ? order : "members"}/${parseInt(page) + 1}`);
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }}
       >
         {parseInt(page) + 1}
@@ -44,6 +47,7 @@ const PageNavigation = ({ page, order }) => {
         className="h-12 flex items-center justify-center w-12  px-5 py-3 rounded-full cursor-pointer"
         onClick={() => {
           navigate(`/anime/${order ? order : "members"}/${parseInt(page) + 2}`);
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }}
       >
         {parseInt(page) + 2}
