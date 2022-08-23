@@ -1,7 +1,7 @@
 import Modal from "../components/Modal";
 import ModalButton from "../components/ModalButton";
 import Recommendations from "../components/Recommendations";
-import { BsChevronDown, BsStarFill } from "react-icons/bs";
+import { BsChevronDown } from "react-icons/bs";
 import Openings from "../components/Openings";
 
 const SingleAnimeData = ({
