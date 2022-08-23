@@ -90,7 +90,7 @@ const Home = () => {
           </p>
           <motion.button
             onClick={() => {
-              navigate("/anime/members/1");
+              navigate("/anime/members/complete/1/none");
             }}
             whileHover={{
               scale: 1.1,

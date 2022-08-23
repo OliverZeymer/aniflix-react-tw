@@ -10,9 +10,9 @@ import AnimeHeading from "../components/AnimeHeading";
 
 const Anime = () => {
   var limit = 10;
-  if (window.innerWidth >= 1900) {
+  if (window.innerWidth >= 1905) {
     limit = 24;
-  } else if (window.innerWidth <= 1899 && window.innerWidth >= 936) {
+  } else if (window.innerWidth <= 1904 && window.innerWidth >= 936) {
     limit = 20;
   } else if (window.innerWidth <= 935) {
     limit = 10;

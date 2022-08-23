@@ -23,7 +23,7 @@ const Themes = () => {
             setShow={setModalShow}
             btnValue="Show Preview"
             setModal={setModalImg}
-            preview="./assets/img/defaulttheme.jpg"
+            preview="./assets/img/defaulttheme.png"
             color="[#334b2f]"
             text="[#334b2f]"
             width="w-48"
@@ -58,7 +58,7 @@ const Themes = () => {
             setShow={setModalShow}
             btnValue="Show Preview"
             setModal={setModalImg}
-            preview="./assets/img/bluetheme.jpg"
+            preview="./assets/img/bluetheme.png"
             color="blue-500"
             text="[#3494d4]"
             width="w-48"
@@ -93,7 +93,7 @@ const Themes = () => {
             setShow={setModalShow}
             btnValue="Show Preview"
             setModal={setModalImg}
-            preview="./assets/img/redtheme.jpg"
+            preview="./assets/img/redtheme.png"
             color="red-500"
             text="[#cf2424]"
             width="w-48"
@@ -128,7 +128,7 @@ const Themes = () => {
             setShow={setModalShow}
             btnValue="Show Preview"
             setModal={setModalImg}
-            preview="./assets/img/lighttheme.jpg"
+            preview="./assets/img/lighttheme.png"
             color="[#afafaf]"
             text="white"
             width="w-48"

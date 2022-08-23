@@ -6,7 +6,7 @@ const PageNavigation = ({ status, page, search, order, mb, mt, bottom }) => {
     <ul className={`flex justify-center mt-${mt} mb-${mb} select-none`}>
       {page > 2 && (
         <li
-          className="h-12 flex items-center justify-center w-12  rounded-full px-5 py-4 cursor-pointer hover:text-primary-text transition-all transition-all"
+          className="h-12 flex items-center justify-center w-12 rounded-full px-5 py-4 cursor-pointer hover:text-primary-text transition-all"
           onClick={() => {
             navigate(
               `/anime/${order ? order : "members"}/${
