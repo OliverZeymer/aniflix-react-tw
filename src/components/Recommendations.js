@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import Loader from "./Loader";
 
 const Recommendations = ({ id }) => {
   const API_URL = `https://api.jikan.moe/v4/anime/${id}/recommendations`;
@@ -11,7 +12,7 @@ const Recommendations = ({ id }) => {
         Recommendations for you:
       </h2>
       <section className="sm:grid sm:grid-cols-auto-fit flex flex-col gap-10 sm:gap-2 w-full h-fit mb-32">
-        {data ? (
+        {data.data ? (
           data.data
             ?.filter((rec, index) => index < 15)
             .map((anime) => (
@@ -35,7 +36,12 @@ const Recommendations = ({ id }) => {
               </article>
             ))
         ) : (
-          <h4 className="heading text-2xl text-center">No results :(</h4>
+          <Loader />
+        )}
+        {data?.data && data.data.length < 1 && (
+          <p className=" text-red-600 text-xl text-center">
+            No recommendations for this anime :(
+          </p>
         )}
       </section>
     </>

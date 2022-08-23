@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import SuccessAnimation from "../components/SuccessAnimation";
+import SuccessAnimation from "./SuccessAnimation";
 import { useState } from "react";
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -33,7 +33,6 @@ const ContactForm = () => {
     resolver: yupResolver(schema),
   });
   const onSubmitHandler = (data) => {
-    console.log(data);
     setIsSuccessfullySubmitted(true);
     setTimeout(() => {
       reset();

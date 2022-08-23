@@ -51,3 +51,6 @@
     rgba(34, 37, 39, 1) 100%
   );
 }
+img {
+  -webkit-user-drag: none;
+}
