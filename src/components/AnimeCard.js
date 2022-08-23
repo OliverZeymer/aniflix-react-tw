@@ -3,7 +3,7 @@ import { BsFillPlayFill, BsStarFill, BsArrowRight } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
-const AnimeCard = ({ data }) => {
+const AnimeCard = ({ data, flipCards }) => {
   const variants = {
     hidden: { scale: 0.9, opacity: 0 },
     enter: { scale: 1, opacity: 1 },
@@ -18,12 +18,12 @@ const AnimeCard = ({ data }) => {
       exit="exit"
       transition={{ type: "spring", duration: 0.6 }}
       key={anime.mal_id}
-      className="card cursor-pointer select-none"
+      className="card cursor-pointer"
       onClick={() => {
         navigate("/singleanime/" + anime.mal_id);
       }}
     >
-      <div className="card__content">
+      <div className={flipCards ? "card__content" : "card__content dont-flip"}>
         <div className="card__front">
           <article
             className="bg-[#222527] relative h-full w-[275px] flex flex-col gap-3 rounded-t-lg rounded-b-sm shadow-lg"

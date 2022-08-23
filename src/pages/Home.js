@@ -57,13 +57,28 @@ const styles = {
       display: flex;
       flex-direction: column-reverse;
     }
+    .carousel .control-next.control-arrow:before {
+      display: none;
+    }
     .carousel.carousel-slider .control-arrow {
-      top: 68px;
-      bottom: 40px;
+      padding: 0;
+      display: none;
+    }
+    .carousel .control-prev.control-arrow {
+      display: none;
     }
     @media screen and (min-width: 640px) {
       .carousel-slider {
         width: 50% !important;
+      }
+      .carousel.carousel-slider .control-arrow {
+        top: 68px;
+        bottom: 40px;
+        padding: 5;
+        display: block;
+      }
+      .carousel .control-next.control-arrow:before {
+        display: block;
       }
     }
   `,

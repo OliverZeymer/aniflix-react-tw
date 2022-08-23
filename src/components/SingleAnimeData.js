@@ -1,7 +1,7 @@
 import Modal from "../components/Modal";
 import ModalButton from "../components/ModalButton";
 import Recommendations from "../components/Recommendations";
-import { BsChevronDown } from "react-icons/bs";
+import { BsChevronDown, BsStarFill } from "react-icons/bs";
 import Openings from "../components/Openings";
 
 const SingleAnimeData = ({
@@ -25,9 +25,18 @@ const SingleAnimeData = ({
           alt={anime.title_english ? anime.title_english : anime.title}
         />
         <div className="md:ml-6">
-          <h2 className="text-2xl font-semibold">
-            <span className="text-yellow-500">★</span>{" "}
-            {anime.score ? anime.score : "?"}
+          <h2
+            className={
+              anime.score >= 9
+                ? "text-purple-500 bg-zinc-900 p-2 rounded-xl text-2xl font-semibold gap-1 flex items-center"
+                : anime.score >= 8
+                ? "text-green-500 bg-zinc-900 p-2 rounded-xl text-2xl font-semibold gap-1 flex  items-center"
+                : "text-white bg-zinc-900 p-2 rounded-xl text-2xl font-semibold gap-1 flex items-center"
+            }
+          >
+            <span className="text-yellow-500">★</span>
+
+            {anime.score ? anime.score.toFixed(2) : "?"}
           </h2>
           <div className="md:flex mb-4">
             <h3 className="text-3xl md:text-4xl font-semibold">
