@@ -92,7 +92,7 @@ const SingleAnimeData = ({
           mt="12"
         />
       )}
-      <div className="mx-auto">
+      <div className="mx-auto w-fit">
         <h2 className="text-4xl text-center mt-16 mb-8">Where to stream:</h2>
         {anime.streaming ? (
           anime.streaming?.map((stream) => (
@@ -103,7 +103,7 @@ const SingleAnimeData = ({
               target="_blank"
               rel="noreferrer"
             >
-              <p className="mb-4 font-semibold underline underline-offset-2 hover:scale-110 transition-all">
+              <p className="mb-4 font-semibold underline underline-offset-2 hover:scale-110 transition-all text-center">
                 {stream.name}
               </p>
             </a>
