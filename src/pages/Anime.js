@@ -1,13 +1,6 @@
 import useFetch from "../hooks/useFetch";
 import { motion } from "framer-motion";
-import {
-  BsFillPlayFill,
-  BsStarFill,
-  BsFillArrowRightCircleFill,
-  BsFillArrowLeftCircleFill,
-  BsArrowRight,
-  BsSearch,
-} from "react-icons/bs";
+import { BsFillPlayFill, BsStarFill, BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill, BsArrowRight, BsSearch } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -26,11 +19,7 @@ const Anime = () => {
   const [status, setStatus] = useState("");
   const navigate = useNavigate();
   const handleChange = (event) => {
-    navigate(
-      `/anime/${
-        event.target.value !== null ? event.target.value : "members"
-      }/${page}`
-    );
+    navigate(`/anime/${event.target.value !== null ? event.target.value : "members"}/${page}`);
   };
   const { order, page } = useParams();
   let API_URL = `https://api.jikan.moe/v4/anime?order_by=${
@@ -45,9 +34,9 @@ const Anime = () => {
   }, []);
   return (
     <>
-      <div>
-        <h2 className="mt-6 mb-12 text-center heading">Anime Library</h2>
-      </div>
+      <h2 className="mt-6 mb-12 text-center heading">Anime Library</h2>
+
+      {/* SEARCH */}
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -58,10 +47,7 @@ const Anime = () => {
         }}
         className="sm:w-1/3 mx-auto mb-8 sm:mb-2 mt-16"
       >
-        <label
-          htmlFor="default-search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only "
-        >
+        <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only ">
           Search
         </label>
         <div className="relative">
@@ -84,12 +70,11 @@ const Anime = () => {
           </button>
         </div>
       </form>
-      <div className="w-full justify-center flex-col sm:flex-row gap-2 flex items-center sm:w-1/3 sm:ml-auto">
+
+      {/* FILTER */}
+      <div className="w-full justify-center flex-col sm:flex-row gap-8 flex items-center sm:w-1/4 sm:ml-auto">
         <div className="w-full flex flex-col items-center sm:block">
-          <label
-            htmlFor="filter"
-            className="mb-2 text-xl font-medium text-white"
-          >
+          <label htmlFor="filter" className="mb-2 text-xl font-medium text-white">
             Status
           </label>
           <select
@@ -104,10 +89,7 @@ const Anime = () => {
           </select>
         </div>
         <div className="w-full flex flex-col items-center sm:block">
-          <label
-            htmlFor="filter"
-            className="mb-2 text-xl font-medium text-white"
-          >
+          <label htmlFor="filter" className="mb-2 text-xl font-medium text-white">
             Filter
           </label>
           <select
@@ -131,19 +113,13 @@ const Anime = () => {
             }}
             whileTap={{ scale: 0.9 }}
             onClick={() => {
-              navigate(
-                `/anime/${order ? order : "members"}/${
-                  page >= 2 ? page - 1 : 1
-                }`
-              );
+              navigate(`/anime/${order ? order : "members"}/${page >= 2 ? page - 1 : 1}`);
             }}
           >
             <BsFillArrowLeftCircleFill size="40" color="var(--primary-text)" />
           </motion.button>
         </li>
-        <p className="font-semibold text-center text-2xl">
-          Current Page: {page}
-        </p>
+        <p className="font-semibold text-center text-2xl">Current Page: {page}</p>
         <li>
           <motion.button
             whileHover={{
@@ -152,9 +128,7 @@ const Anime = () => {
             }}
             whileTap={{ scale: 0.9 }}
             onClick={() => {
-              navigate(
-                `/anime/${order ? order : "members"}/${parseInt(page) + 1}`
-              );
+              navigate(`/anime/${order ? order : "members"}/${parseInt(page) + 1}`);
             }}
           >
             <BsFillArrowRightCircleFill size="40" color="var(--primary-text)" />
@@ -217,16 +191,7 @@ const Anime = () => {
                               : "text-white bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
                           }
                         >
-                          <BsStarFill
-                            color={
-                              anime.score > 9
-                                ? "#974EDD"
-                                : anime.score > 8
-                                ? "#22C55E"
-                                : "white"
-                            }
-                            size="14"
-                          />
+                          <BsStarFill color={anime.score > 9 ? "#974EDD" : anime.score > 8 ? "#22C55E" : "white"} size="14" />
 
                           {anime.score ? anime.score.toFixed(2) : "?"}
                         </h4>
@@ -235,8 +200,7 @@ const Anime = () => {
                           {anime.members.toLocaleString()}
                         </p>
                         <p className="bg-zinc-900 p-2 rounded-xl text-xl flex items-center">
-                          <BsFillPlayFill />{" "}
-                          {anime.episodes ? anime.episodes : "?"}
+                          <BsFillPlayFill /> {anime.episodes ? anime.episodes : "?"}
                         </p>
                       </div>
                     </article>
@@ -244,15 +208,11 @@ const Anime = () => {
                   <div className="card__back bg-[#222527] h-full rounded-t-lg flex flex-col justify-between items-center rounded-b-sm">
                     <div className="mt-8">
                       {anime.title_english ? (
-                        <h2 className="mb-4 font-semibold text-3xl">
-                          {anime.title_english}
-                        </h2>
+                        <h2 className="mb-4 font-semibold text-3xl">{anime.title_english}</h2>
                       ) : (
                         <h2 className="mb-4 text-3xl">{anime.title}</h2>
                       )}
-                      <p className="overflow-hidden h-48 px-1 fade-out">
-                        {anime.synopsis}
-                      </p>
+                      <p className="overflow-hidden h-48 px-1 fade-out">{anime.synopsis}</p>
                     </div>
                     <button className="border-2 border-white rounded-full py-2 px-4 flex text-3xl items-center gap-1">
                       Read More <BsArrowRight />
@@ -260,9 +220,7 @@ const Anime = () => {
                     <div className="flex flex-col items-center w-full mb-2 px-3">
                       <div className="flex justify-between items-center w-full">
                         <p>Year: {anime.year ? anime.year : "????"}</p>
-                        <p className="flex items-center gap-1">
-                          {anime.type === "TV" ? "Series" : anime.type}
-                        </p>
+                        <p className="flex items-center gap-1">{anime.type === "TV" ? "Series" : anime.type}</p>
                       </div>
                     </div>
                   </div>
