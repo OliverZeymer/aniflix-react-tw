@@ -1,5 +1,5 @@
 import useFetch from "../hooks/useFetch";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import PageNavigation from "../components/PageNavigation";
@@ -7,8 +7,10 @@ import SearchBar from "../components/SearchBar";
 import SelectFilters from "../components/SelectFilters";
 import AnimeCard from "../components/AnimeCard";
 import AnimeHeading from "../components/AnimeHeading";
+import Toggle from "../components/Toggle";
 
 const Anime = () => {
+  const [flipCards, setFlipCards] = useState();
   var limit = 10;
   if (window.innerWidth >= 1905) {
     limit = 24;
@@ -41,17 +43,23 @@ const Anime = () => {
         order={order}
         search={search}
       />
+
       <PageNavigation
         status={status}
         page={page}
         order={order}
         search={search}
-        mb="8"
+        mb="0"
         mt="8"
       />
+      <Toggle flipCards={flipCards} setFlipCards={setFlipCards} />
       <section className="sm:grid sm:grid-cols-auto-fit flex flex-col gap-6 w-full h-fit">
         {error && <p>{error}</p>}
-        {isLoading ? <Loader /> : <AnimeCard data={data} />}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <AnimeCard flipCards={flipCards} data={data} />
+        )}
       </section>
       <PageNavigation
         status={status}

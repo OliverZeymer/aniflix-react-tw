@@ -17,6 +17,12 @@
 
 .card:hover .card__content {
   transform: rotateY(180deg);
+  user-select: none;
+}
+
+.dont-flip {
+  transform: rotateY(0deg) !important;
+  user-select: all !important;
 }
 
 .card__front,
