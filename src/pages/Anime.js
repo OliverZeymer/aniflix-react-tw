@@ -10,7 +10,7 @@ import AnimeHeading from "../components/AnimeHeading";
 import Toggle from "../components/Toggle";
 
 const Anime = () => {
-  const [flipCards, setFlipCards] = useState();
+  const [flipCards, setFlipCards] = useState(true);
   var limit = 10;
   if (window.innerWidth >= 1905) {
     limit = 24;
