@@ -1,9 +1,10 @@
+/* Import Tailwind and Google Fonts */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-/* Import Tailwind Components */
+/* CSS Imports */
 @import url("./styles/button.css");
 @import url("./styles/heading.css");
 @import url("./styles/input.css");
@@ -13,12 +14,9 @@
 @import url("./styles/select.css");
 @import url("./styles/loader.css");
 
-/* -------------------------- */
-
-/*      Color Variables       */
+/*      Global Color Variables       */
 :root {
   --primary-color: #334b2f;
   --primary-text: #42693b;
   --primary-background: #19191b;
 }
-/* -------------------------- */

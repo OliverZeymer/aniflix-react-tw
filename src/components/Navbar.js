@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const navigation = [
   { name: "Home", href: "/", current: false },
   { name: "Themes", href: "/themes", current: false },
-  { name: "Anime", href: "/anime/members/1", current: false },
+  { name: "Anime", href: "/anime/members/complete/1/none", current: false },
   { name: "Contact Us", href: "/contact", current: false },
 ];
 
@@ -19,7 +19,7 @@ const Navbar = () => {
     <Disclosure as="nav" className="border-b-2 border-primary-color">
       {({ open }) => (
         <>
-          <div className="max-w-full mx-auto px-2 sm:px-4">
+          <div className="max-w-full mx-auto px-2 sm:px-20">
             <div className="relative flex items-center justify-between h-20">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -46,7 +46,7 @@ const Navbar = () => {
                       src="https://media.discordapp.net/attachments/629956796802400257/1009231518109024347/aniflix.png?width=678&height=676"
                       alt="Workflow"
                     />
-                    <h1 className="text-2xl text-primary-text">AniFlix</h1>
+                    <h1 className="text-3xl text-primary-text">AniFlix</h1>
                   </Link>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
@@ -57,8 +57,8 @@ const Navbar = () => {
                         to={item.href}
                         className={classNames(
                           item.current
-                            ? "bg-white text-primary-text"
-                            : "text-primary-text hover:text-white",
+                            ? "bg-white text-primary-text text-sm md:text-xl"
+                            : "text-primary-text hover:text-white text-sm md:text-xl",
                           "px-3 py-2 rounded-md text-md font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
@@ -102,41 +102,38 @@ const Navbar = () => {
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="/"
+                          <p
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Your Profile
-                          </a>
+                          </p>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="/"
+                          <p
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Settings
-                          </a>
+                          </p>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="/"
+                          <p
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Sign out
-                          </a>
+                          </p>
                         )}
                       </Menu.Item>
                     </Menu.Items>

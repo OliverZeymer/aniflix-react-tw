@@ -1,6 +1,6 @@
 import { BsArrowUpRight } from "react-icons/bs";
 import Slider from "../components/Slider";
-import ServicesSection from "../templates/ServicesSection";
+import ServicesSection from "../components/ServicesSection";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";

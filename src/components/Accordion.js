@@ -4,7 +4,7 @@ import { BsChevronDown } from "react-icons/bs";
 const Accordion = ({ heading, content }) => {
   const [isActive, setIsActive] = useState(false);
   return (
-    <li className="border-b-2 border-primary-color cursor-pointer pt-8 pb-4">
+    <li className="border-b-2 border-primary-color cursor-pointer mt-8 mb-4">
       <motion.div
         onClick={() => setIsActive(!isActive)}
         initial={false}

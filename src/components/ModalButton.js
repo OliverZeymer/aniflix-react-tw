@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const ModalButton = ({
   show,
   setShow,
@@ -12,7 +14,12 @@ const ModalButton = ({
 }) => {
   return (
     <>
-      <button
+      <motion.button
+        whileHover={{
+          scale: 1.1,
+          transition: { duration: 0.1 },
+        }}
+        whileTap={{ scale: 0.9 }}
         className={`button w-fit bg-${color} ${width} mx-${mx} mt-${mt} border-${color} hover:text-${text} `}
         onClick={function () {
           setShow(!show);
@@ -22,7 +29,7 @@ const ModalButton = ({
         }}
       >
         {btnValue}
-      </button>
+      </motion.button>
     </>
   );
 };

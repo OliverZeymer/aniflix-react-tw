@@ -9,9 +9,8 @@ import Themes from "./pages/Themes";
 import Contact from "./pages/Contact";
 import Anime from "./pages/Anime";
 import SingleAnime from "./pages/SingleAnime";
-import Search from "./pages/Search";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <BrowserRouter>
     <Routes>
@@ -20,9 +19,8 @@ root.render(
         <Route path="*" element={<NotFound />} />
         <Route path="/themes" element={<Themes />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/anime/:order/:page" element={<Anime />} />
+        <Route path="/anime/:order/:status/:page/:search" element={<Anime />} />
         <Route path="/singleanime/:id" element={<SingleAnime />} />
-        <Route path="/search/:search" element={<Search />} />
       </Route>
     </Routes>
   </BrowserRouter>

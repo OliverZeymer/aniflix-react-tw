@@ -71,8 +71,7 @@ const Modal = ({ show, setShow, src, video }) => {
                 title="YouTube video player"
                 frameBorder="0"
                 className={`sm:h-[700px] sm:w-full shadow-xl rounded-lg select-none`}
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay;"
-                autoPlay="1"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
                 allowFullScreen
               ></iframe>
             )}
