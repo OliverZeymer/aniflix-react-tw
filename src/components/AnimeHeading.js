@@ -34,7 +34,14 @@ const AnimeHeading = ({ search, order, status, data }) => {
           </h2>
         </motion.div>
       ) : (
-        <h2 className="mt-6 mb-12 text-center heading">Anime Library</h2>
+        <motion.h2
+          initial={{ x: -400, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: "spring", duration: 1 }}
+          className="mt-6 mb-12 text-center heading"
+        >
+          Anime Library
+        </motion.h2>
       )}
     </>
   );

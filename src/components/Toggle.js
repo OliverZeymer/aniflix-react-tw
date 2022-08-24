@@ -4,7 +4,10 @@ const Toggle = () => {
   const { flipCards, setFlipCards } = useContext(flipCardsContext);
   return (
     <div className="mx-auto flex items-center justify-center mt-4 sm:mx-0 sm:block sm:mt-0 w-fit">
-      <label htmlFor="checked-toggle" className=" relative items-center cursor-pointer select-none">
+      <label
+        htmlFor="checked-toggle"
+        className=" relative items-center cursor-pointer select-none"
+      >
         <input
           type="checkbox"
           value=""
