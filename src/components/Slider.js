@@ -37,7 +37,7 @@ const Slider = () => {
         {slides.map((slide, index) => (
           <div key={slide.title}>
             <h3
-              className={`heading text-2xl sm:text-4xl underline mb-1 cursor-pointer ${slide.color}`}
+              className={`heading text-2xl sm:text-4xl underline mb-1 sm:mb-3 cursor-pointer ${slide.color}`}
               onClick={() => {
                 navigate("/singleanime/" + slide.id);
               }}

@@ -87,9 +87,12 @@ const Home = () => {
         className="flex flex-col sm:flex-row justify-between my-20"
       >
         <div className="sm:w-2/5">
-          <motion.h2 className="heading">AniFlix - The anime library for all your needs</motion.h2>
+          <motion.h2 className="heading">
+            AniFlix - The anime library for all your needs
+          </motion.h2>
           <p className="my-8 opacity-70 font-bold">
-            AniFlix is a library that offers all anime series and manga you can think off, we will provide the best possible service for our users.
+            AniFlix is a library that offers all anime series and manga you can
+            think off, we will provide the best possible service for our users.
           </p>
           <motion.button
             onClick={() => {
@@ -125,7 +128,9 @@ const Home = () => {
       <section className="my-20">
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <h1 className="heading my-6">Why AniFlix is the best choice?</h1>
-          <p className="mb-12 sm:mb-0 sm:w-[30%] font-bold opacity-70">Watch this one minute video to find out why you should use AniFlix!</p>
+          <p className="mb-12 sm:mb-0 sm:w-[30%] font-bold opacity-70">
+            Watch this one minute video to find out why you should use AniFlix!
+          </p>
         </div>
         <iframe
           className="w-full sm:h-[80vh] rounded-sm select-none"
@@ -144,7 +149,9 @@ const Home = () => {
       </div>
 
       <section className="my-20 flex flex-col items-center">
-        <h2 className="heading text-3xl sm:text-5xl mb-20 text-center">Contact us if you have any questions</h2>
+        <h2 className="heading text-3xl sm:text-5xl mb-20 text-center">
+          Contact us if you have any questions
+        </h2>
 
         <Link to="/contact">
           <motion.div
