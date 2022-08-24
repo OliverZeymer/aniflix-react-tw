@@ -4,24 +4,28 @@ import { useState } from "react";
 import { setColors } from "./functions/setColors";
 import Footer from "./components/Footer";
 import searchContext from "./contexts/searchContext";
+import flipCardsContext from "./contexts/flipCardsContext";
 function App() {
   const themeLS = JSON.parse(window.localStorage.getItem("theme"));
   const [theme] = useState(themeLS);
   const [search, setSearch] = useState("");
+  const [flipCards, setFlipCards] = useState(true);
   if (theme) {
     setColors(theme.primaryColor, theme.textColor);
   }
 
   return (
-    <searchContext.Provider value={{ search, setSearch }}>
-      <div className="App">
-        <Navbar />
-        <div className="w-[85%] mx-auto">
-          <Outlet />
+    <flipCardsContext.Provider value={{ flipCards, setFlipCards }}>
+      <searchContext.Provider value={{ search, setSearch }}>
+        <div className="App">
+          <Navbar />
+          <div className="w-[85%] mx-auto">
+            <Outlet />
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </searchContext.Provider>
+      </searchContext.Provider>
+    </flipCardsContext.Provider>
   );
 }
 

@@ -1,16 +1,16 @@
-const Toggle = ({ flipCards, setFlipCards }) => {
+import { useContext } from "react";
+import flipCardsContext from "../contexts/flipCardsContext";
+const Toggle = () => {
+  const { flipCards, setFlipCards } = useContext(flipCardsContext);
   return (
     <div className="mx-auto flex items-center justify-center mt-4 sm:mx-0 sm:block sm:mt-0 w-fit">
-      <label
-        htmlFor="checked-toggle"
-        className=" relative items-center cursor-pointer select-none"
-      >
+      <label htmlFor="checked-toggle" className=" relative items-center cursor-pointer select-none">
         <input
           type="checkbox"
           value=""
           id="checked-toggle"
           className="sr-only peer"
-          defaultChecked
+          checked={flipCards}
           onClick={() => {
             setFlipCards(!flipCards);
           }}
