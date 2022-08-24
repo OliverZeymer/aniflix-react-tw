@@ -33,7 +33,7 @@ const Slider = () => {
   return (
     <section>
       <h2 className="heading text-center">Latest Arrivals:</h2>
-      <Carousel infiniteLoop interval="3000" autoPlay>
+      <Carousel infiniteLoop interval="2000" autoPlay>
         {slides.map((slide, index) => (
           <div key={slide.title}>
             <h3
