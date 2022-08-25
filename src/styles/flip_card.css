@@ -22,7 +22,9 @@
 
 .dont-flip {
   transform: rotateY(0deg) !important;
-  user-select: all !important;
+}
+.dont-flip:hover {
+  transform: scale(1.05) !important;
 }
 
 .card__front,
@@ -52,10 +54,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-image: linear-gradient(
-    rgba(34, 37, 39, 0) 50%,
-    rgba(34, 37, 39, 1) 100%
-  );
+  background-image: linear-gradient(rgba(34, 37, 39, 0) 50%, rgba(34, 37, 39, 1) 100%);
 }
 img {
   -webkit-user-drag: none;
