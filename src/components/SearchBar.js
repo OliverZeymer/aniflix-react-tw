@@ -2,7 +2,9 @@ import { BsSearch } from "react-icons/bs";
 import { useSearchParams, useNavigate } from "react-router-dom";
 const SearchBar = ({ params }) => {
   const navigate = useNavigate();
+  /* eslint-disable */
   const [searchParams, setSearchParams] = useSearchParams();
+  /* eslint-enable */
   return (
     <form
       onSubmit={(event) => {

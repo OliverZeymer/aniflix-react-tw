@@ -17,7 +17,9 @@ const Anime = () => {
   } else if (window.innerWidth <= 935) {
     limit = 10;
   }
+  /* eslint-disable */
   const [searchParams, setSearchParams] = useSearchParams();
+  /* eslint-enable */
   var order = searchParams.get("order") || "members";
   var status = searchParams.get("status") || "all";
   var page = searchParams.get("page") || 1;

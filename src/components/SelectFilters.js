@@ -1,6 +1,8 @@
 import { useSearchParams } from "react-router-dom";
 const SelectFilters = ({ status, page, order, search, params }) => {
+  /* eslint-disable */
   const [searchParams, setSearchParams] = useSearchParams();
+  /* eslint-enable */
   const handleOrderChange = (event) => {
     setSearchParams({ ...params, order: event.target.value });
   };

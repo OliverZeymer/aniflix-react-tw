@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
 
 const AnimeHeading = ({ search, data }) => {
+  /* eslint-disable */
   const [searchParams, setSearchParams] = useSearchParams();
+  /* eslint-enable */
   return (
     <>
       {search ? (

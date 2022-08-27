@@ -10,7 +10,9 @@ const PageNavigation = ({
   bottom,
   params,
 }) => {
+  /* eslint-disable */
   const [searchParams, setSearchParams] = useSearchParams();
+  /* eslint-enable */
   return (
     <ul className={`flex justify-center mt-${mt} mb-${mb} select-none`}>
       {page > 2 && (
