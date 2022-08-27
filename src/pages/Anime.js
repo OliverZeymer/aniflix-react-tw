@@ -39,13 +39,14 @@ const Anime = () => {
     if (window.innerWidth >= 640) {
       document.getElementsByClassName("search")[0].focus();
     }
+    document.title = `Anime - AniFlix`;
   }, []);
 
   return (
     <main>
       <AnimeHeading search={search} order={order} status={status} data={data} />
       <SearchBar order={order} status={status} params={params} />
-      <SelectFilters params={params} />
+      <SelectFilters params={params} order={order} status={status} />
       <PageNavigation
         page={page}
         data={data}

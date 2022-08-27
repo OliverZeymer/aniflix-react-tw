@@ -1,11 +1,14 @@
 import { setToLS } from "../functions/setToLS";
 import { setColors } from "../functions/setColors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 import ModalButton from "../components/ModalButton";
 import Notification from "../components/Notification";
 import { motion } from "framer-motion";
 const Themes = () => {
+  useEffect(() => {
+    document.title = `Themes - AniFlix`;
+  }, []);
   const [modalImg, setModalImg] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [notificationShow, setNotificationShow] = useState(false);

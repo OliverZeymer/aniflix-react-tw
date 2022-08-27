@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 const styles = {
   hero: css`
@@ -75,6 +75,9 @@ const styles = {
   `,
 };
 const Home = () => {
+  useEffect(() => {
+    document.title = `AniFlix`;
+  }, []);
   const themeLS = JSON.parse(window.localStorage.getItem("theme"));
   const [theme] = useState(themeLS);
   const navigate = useNavigate();

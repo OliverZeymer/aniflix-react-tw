@@ -70,13 +70,14 @@ const SingleAnimeData = ({
 
               <p className="capitalize mb-4">
                 <span className="font-semibold">Release :</span>{" "}
-                {anime?.season ? anime?.season : "Unknown"},{" "}
                 {anime?.year ? anime?.year : "Unknown"}
               </p>
               <p className="capitalize mb-4">
                 <span className="font-semibold">Genre :</span>{" "}
                 {anime.genres
-                  ? anime.genres.map((genre) => genre.name + ", ")
+                  ? anime.genres.map((genre, index) => (
+                      <span>{(index ? ", " : "") + genre.name}</span>
+                    ))
                   : "Unknown"}
               </p>
               <p className="mb-4">
