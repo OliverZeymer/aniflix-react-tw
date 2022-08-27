@@ -9,7 +9,6 @@ const Themes = () => {
   const [modalImg, setModalImg] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [notificationShow, setNotificationShow] = useState(false);
-
   return (
     <section className="flex flex-col gap-14 h-fit my-20">
       <Notification show={notificationShow} setShow={setNotificationShow} />
@@ -94,7 +93,7 @@ const Themes = () => {
             btnValue="Show Preview"
             setModal={setModalImg}
             preview="./assets/img/redtheme.png"
-            color="red-500"
+            color="red-600"
             text="[#cf2424]"
             width="w-48"
           />
@@ -113,7 +112,7 @@ const Themes = () => {
               setNotificationShow(false);
             }, 2500);
           }}
-          className="button bg-red-500 border-red-500 w-48 flex justify-center mt-8 sm:mt-0  hover:text-[#cf2424]"
+          className="button bg-red-600 border-red-600 w-48 flex justify-center mt-8 sm:mt-0  hover:text-[#cf2424]"
         >
           Enable
         </motion.button>

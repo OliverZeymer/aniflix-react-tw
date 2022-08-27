@@ -7,22 +7,40 @@ import flipCardsContext from "../contexts/flipCardsContext";
 import Loader from "./Loader";
 const AnimeCard = ({ data, error, isLoading }) => {
   const { flipCards } = useContext(flipCardsContext);
+
   const variants = {
     hidden: { scale: 0.9, opacity: 0 },
     enter: { scale: 1, opacity: 1 },
     exit: { scale: 0.9, opacity: 0 },
   };
   const navigate = useNavigate();
-  console.log(data);
   return (
     <>
+      {data?.data?.length === 0 && (
+        <div className="h-screen flex flex-col items-center">
+          <h2 className="text-center heading pt-0">No Results Found :( </h2>
+          <button
+            className="button mt-8"
+            onClick={() => {
+              navigate("/anime");
+            }}
+          >
+            Back to list
+          </button>
+          <img
+            src="https://cdn.discordapp.com/attachments/629956796802400257/1012879580316565605/chara_asta-black-clover-render.png"
+            alt="no results found"
+            className="w-1/4 mx-auto mt-8"
+          />
+        </div>
+      )}
       {error && <p>{error}</p>}
       {data.status && (
         <div className="flex flex-col text-center h-screen items-center">
           <p className="text-red-600 text-7xl">{data.status}</p>
           <p className="text-red-500 text-3xl">{data.message}</p>
           <button
-            className="button bg-red-600 mt-2 "
+            className="button bg-red-600 border-red-600 hover:text-red-600 mt-2 "
             onClick={() => window.location.reload()}
           >
             Refresh
@@ -94,15 +112,23 @@ const AnimeCard = ({ data, error, isLoading }) => {
                             ? "text-purple-500 bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
                             : anime.score >= 8
                             ? "text-green-500 bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex  items-center"
+                            : anime.score >= 7
+                            ? "text-white-600 bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
+                            : anime.score > 0
+                            ? "text-red-600 bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
                             : "text-white bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
                         }
                       >
                         <BsStarFill
                           color={
-                            anime.score > 9
+                            anime.score >= 9
                               ? "#974EDD"
-                              : anime.score > 8
+                              : anime.score >= 8
                               ? "#22C55E"
+                              : anime.score >= 6.5
+                              ? "white"
+                              : anime.score > 0
+                              ? "#dc2626"
                               : "white"
                           }
                           size="14"
@@ -115,7 +141,7 @@ const AnimeCard = ({ data, error, isLoading }) => {
                         {anime.members ? anime.members.toLocaleString() : "?"}
                       </p>
                       <p className="bg-zinc-900 p-2 rounded-xl text-xl flex items-center">
-                        <BsFillPlayFill />{" "}
+                        <BsFillPlayFill />
                         {anime.episodes ? anime.episodes : "?"}
                       </p>
                     </div>

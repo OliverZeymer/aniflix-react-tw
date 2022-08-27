@@ -22,7 +22,7 @@ const SingleAnimeData = ({
           <p className="text-red-600 text-7xl">{data.status}</p>
           <p className="text-red-500 text-3xl">{data.message}</p>
           <button
-            className="button bg-red-600 mt-2 "
+            className="button bg-red-600 border-red-600 hover:text-red-600 mt-2 "
             onClick={() => window.location.reload()}
           >
             Refresh
@@ -57,13 +57,17 @@ const SingleAnimeData = ({
                 {anime?.score ? anime?.score.toFixed(2) : "?"}
               </h2>
               <div className="md:flex mb-4">
-                <h3 className="text-3xl md:text-4xl font-semibold">
-                  {anime?.title_english ? anime?.title_english : anime?.title}
-                </h3>
+                <div>
+                  <h3 className="text-3xl md:text-4xl font-semibold">
+                    {anime?.title_english ? anime?.title_english : anime?.title}
+                  </h3>
+                  <h4>{anime?.title_japanese}</h4>
+                </div>
                 <p className=" hidden sm:block text-lg ml-4 mt-1">
                   {anime?.type ? anime?.type : "Unknown"}
                 </p>
               </div>
+
               <p className="capitalize mb-4">
                 <span className="font-semibold">Release :</span>{" "}
                 {anime?.season ? anime?.season : "Unknown"},{" "}

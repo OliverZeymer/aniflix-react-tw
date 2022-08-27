@@ -2,6 +2,7 @@ import useFetch from "../hooks/useFetch";
 import Loader from "../components/Loader";
 const Openings = ({ id }) => {
   const { data } = useFetch(`https://api.jikan.moe/v4/anime/${id}/videos`);
+
   return (
     <section className="flex flex-col items-center">
       {data?.data ? (
@@ -9,6 +10,7 @@ const Openings = ({ id }) => {
           <iframe
             key={video.video.url}
             src={`${video.video.embed_url} + "&autoplay=0"`}
+            id="openingPlayer"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
