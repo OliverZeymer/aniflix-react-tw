@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const NotFound = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    document.title = `Page Not Found - AniFlix`;
+  }, []);
   return (
     <div className="container mx-auto flex items-center">
       <div className="w-full flex flex-col items-center ">

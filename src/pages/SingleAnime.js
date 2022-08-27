@@ -16,6 +16,13 @@ const SingleAnime = () => {
     window.scrollTo(0, 0);
     setShowOpenings(false);
   }, [id]);
+  useEffect(() => {
+    if (singleAnime) {
+      document.title = `${
+        singleAnime.title_english || singleAnime.title
+      } - AniFlix`;
+    }
+  }, [singleAnime]);
   return (
     <SingleAnimeData
       data={data}
