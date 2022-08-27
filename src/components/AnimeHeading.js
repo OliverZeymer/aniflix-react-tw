@@ -1,15 +1,14 @@
-import { useContext } from "react";
 import { BsArrowLeft } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
-import searchContext from "../contexts/searchContext";
 import { motion } from "framer-motion";
+import { useSearchParams } from "react-router-dom";
 
-const AnimeHeading = ({ search, order, status, data }) => {
-  const navigate = useNavigate();
-  const { setSearch } = useContext(searchContext);
+const AnimeHeading = ({ search, data }) => {
+  /* eslint-disable */
+  const [searchParams, setSearchParams] = useSearchParams();
+  /* eslint-enable */
   return (
     <>
-      {search !== "none" || undefined ? (
+      {search ? (
         <motion.div
           initial={{ x: -800, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -20,8 +19,8 @@ const AnimeHeading = ({ search, order, status, data }) => {
             size="50"
             className="text-primary-text cursor-pointer hover:scale-125 transition-all"
             onClick={() => {
-              navigate(`/anime/${order}/${status}/1/none`);
-              setSearch("");
+              setSearchParams({ search: "" });
+              document.querySelector(".search").value = "";
             }}
           />
           <h2

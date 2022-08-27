@@ -16,7 +16,7 @@ const Recommendations = ({ id }) => {
           <p className="text-red-600 text-7xl">{data.status}</p>
           <p className="text-red-500 text-3xl">{data.message}</p>
           <button
-            className="button bg-red-600 mt-2"
+            className="button bg-red-600 border-red-600 hover:text-red-600 mt-2"
             onClick={() => window.location.reload()}
           >
             Refresh

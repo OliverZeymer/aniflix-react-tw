@@ -13,7 +13,7 @@ const Notification = ({ show, setShow }) => {
           className="fixed top-12 right-24"
         >
           <div className="noti-progress">
-            <div className="noti-color"></div>
+            <div className="noti-color rounded-3xl"></div>
           </div>
           <div className="flex select-none">
             <div className="m-auto">

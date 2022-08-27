@@ -1,17 +1,26 @@
-import { useContext } from "react";
-import searchContext from "../contexts/searchContext";
 import { BsSearch } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
-const SearchBar = ({ order, status }) => {
-  const { search, setSearch } = useContext(searchContext);
+import { useSearchParams, useNavigate } from "react-router-dom";
+const SearchBar = ({ params }) => {
   const navigate = useNavigate();
+  /* eslint-disable */
+  const [searchParams, setSearchParams] = useSearchParams();
+  /* eslint-enable */
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        navigate(`/anime/${order}/${status}/1/${search}`);
-        if (search === "") {
-          navigate("/anime/members/complete/1/none");
+
+        if (event.target[0].value === "") {
+          navigate("/anime");
+          setSearchParams({ ...params, status: "all", search: "" });
+        } else {
+          setSearchParams({
+            ...params,
+            search: event.target[0].value,
+            page: 1,
+            status: "all",
+            order: "members",
+          });
         }
       }}
       className="sm:w-1/3 h-full mb-8 sm:mx-auto"
@@ -27,12 +36,10 @@ const SearchBar = ({ order, status }) => {
           <BsSearch color="white" size="20" />
         </div>
         <input
-          value={search}
           type="search"
           className="search block p-4 outline-none pl-10 w-full text-sm text-white bg-[#222527] rounded-lg border border-primary-color"
           placeholder="Search Anime..."
           autoComplete="off"
-          onChange={(e) => setSearch(e.target.value)}
         />
         <button
           type="submit"

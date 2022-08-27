@@ -1,19 +1,13 @@
-import { useNavigate } from "react-router-dom";
-const SelectFilters = ({ status, page, order, search }) => {
-  const navigate = useNavigate();
+import { useSearchParams } from "react-router-dom";
+const SelectFilters = ({ status, page, order, search, params }) => {
+  /* eslint-disable */
+  const [searchParams, setSearchParams] = useSearchParams();
+  /* eslint-enable */
   const handleOrderChange = (event) => {
-    navigate(
-      `/anime/${
-        event.target.value !== null ? event.target.value : "members"
-      }/${status}/${page}/${search}`
-    );
+    setSearchParams({ ...params, order: event.target.value });
   };
   const handleStatusChange = (event) => {
-    navigate(
-      `/anime/${order}/${
-        event.target.value !== null ? event.target.value : "complete"
-      }/${page}/${search}`
-    );
+    setSearchParams({ ...params, status: event.target.value });
   };
   return (
     <div className="w-full justify-center flex-col sm:flex-row gap-8 flex items-center sm:w-1/4 sm:mx-auto">
@@ -25,9 +19,10 @@ const SelectFilters = ({ status, page, order, search }) => {
           Filter
         </label>
         <select
+          defaultValue="members"
           onChange={(event) => handleOrderChange(event)}
-          value={order !== null ? order : "members"}
-          id="filter"
+          value={order}
+          id="filter orderlist"
           className="border border-gray-300 bg-[#222527] text-white mb-4 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
         >
           <option value="members">Viewers</option>
@@ -36,15 +31,17 @@ const SelectFilters = ({ status, page, order, search }) => {
         </select>
       </div>
       <div className="w-full flex flex-col items-center sm:block">
-        <label htmlFor="filter" className=" text-xl font-medium text-white">
+        <label htmlFor="filter" className="text-xl font-medium text-white">
           Status
         </label>
         <select
+          defaultValue="all"
           onChange={(event) => handleStatusChange(event)}
-          value={status !== null ? status : "completed"}
-          id="filter"
+          value={status}
+          id="filter statuslist"
           className="border border-gray-300 bg-[#222527] text-white mb-4 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
         >
+          <option value="all">All</option>
           <option value="complete">Complete</option>
           <option value="airing">Airing</option>
           <option value="upcoming">Upcoming</option>
