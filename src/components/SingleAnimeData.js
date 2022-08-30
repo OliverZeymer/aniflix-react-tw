@@ -48,7 +48,9 @@ const SingleAnimeData = ({
                   anime?.score >= 9
                     ? "text-purple-500 bg-zinc-900 p-2 rounded-xl text-2xl font-semibold gap-1 flex items-center"
                     : anime?.score >= 8
-                    ? "text-green-500 bg-zinc-900 p-2 rounded-xl text-2xl font-semibold gap-1 flex  items-center"
+                    ? "text-green-500 bg-zinc-900 p-2 rounded-xl text-2xl font-semibold gap-1 flex items-center"
+                    : anime?.score <= 6.5
+                    ? "text-red-600 bg-zinc-900 p-2 rounded-xl text-2xl font-semibold gap-1 flex items-center"
                     : "text-white bg-zinc-900 p-2 rounded-xl text-2xl font-semibold gap-1 flex items-center"
                 }
               >

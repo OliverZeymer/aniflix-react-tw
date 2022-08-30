@@ -112,7 +112,7 @@ const AnimeCard = ({ data, error, isLoading }) => {
                             ? "text-purple-500 bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
                             : anime.score >= 8
                             ? "text-green-500 bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex  items-center"
-                            : anime.score >= 7
+                            : anime.score >= 6.5
                             ? "text-white-600 bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
                             : anime.score > 0
                             ? "text-red-600 bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
