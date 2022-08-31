@@ -5,6 +5,7 @@ import { setColors } from "./functions/setColors";
 import Footer from "./components/Footer";
 import searchContext from "./contexts/searchContext";
 import flipCardsContext from "./contexts/flipCardsContext";
+import NewNavbarGangGang from "./components/NewNavbarGangGang";
 function App() {
   const themeLS = JSON.parse(window.localStorage.getItem("theme"));
   const [theme] = useState(themeLS);
@@ -18,7 +19,7 @@ function App() {
     <flipCardsContext.Provider value={{ flipCards, setFlipCards }}>
       <searchContext.Provider value={{ search, setSearch }}>
         <div className="App">
-          <Navbar />
+          <NewNavbarGangGang />
           <div className="w-[85%] mx-auto">
             <Outlet />
           </div>
