@@ -12,7 +12,7 @@ const NewNavbarGangGang = () => {
           <NavLink
             className={(navData) =>
               navData.isActive
-                ? "text-primary-color items-center gap-3 cursor-pointer hover:scale-105 transition-all text-[16px] flex font-medium bg-black rounded-lg"
+                ? "relative text-primary-color items-center gap-3 cursor-pointer hover:scale-105 transition-all text-[16px] flex font-medium after:absolute after:bottom-2 after:left-0 after:w-full after:border-b-2 after:border-b-primary-text"
                 : "text-primary-text gap-4 cursor-pointer hover:scale-105 transition-all text-[16px] flex font-medium"
             }
             to="/"
