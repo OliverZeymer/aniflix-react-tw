@@ -13,7 +13,7 @@ const Themes = () => {
   const [modalShow, setModalShow] = useState(false);
   const [notificationShow, setNotificationShow] = useState(false);
   return (
-    <section className="flex flex-col gap-14 h-fit my-20">
+    <section className="flex flex-col gap-14 h-fit mt-6 mb-20 sm:mt-20">
       <Notification show={notificationShow} setShow={setNotificationShow} />
       <article className="flex flex-col items-center justify-between pb-16 sm:flex-row  border-b-2 border-blue-500">
         <h2 className="heading w-full pt-0 text-center sm:text-start text-[#42693b]">

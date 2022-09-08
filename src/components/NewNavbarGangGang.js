@@ -1,30 +1,37 @@
 import { NavLink } from "react-router-dom";
 import { BsHouseDoor, BsPaintBucket, BsHeadset } from "react-icons/bs";
 import { FaThList } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const NewNavbarGangGang = () => {
+  const navigate = useNavigate();
   return (
-    <nav className="z-40 flex fixed sm:static sm:block bottom-0 w-screen sm:w-full bg-primary-background">
-      <div className="wrapper w-10/12 sm:w-4/5 mx-auto py-4 sm:py-8">
-        <ul className="flex justify-between sm:gap-12">
-          <h1 className="hidden sm:block text-primary-color text-3xl font-semibold">
+    <nav className="z-40 flex fixed select-none sm:static sm:block bottom-0 w-screen sm:w-full bg-[#2a2a2e] sm:bg-primary-background">
+      <div className="wrapper w-10/12 sm:w-[85%] mx-auto py-4 sm:py-8">
+        <ul className="flex justify-between">
+          <h1
+            className="hidden sm:block mt-auto text-primary-text text-3xl font-semibold cursor-pointer"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             Aniflix
           </h1>
           <NavLink
             className={(navData) =>
               navData.isActive
-                ? "relative text-primary-color items-center gap-3 cursor-pointer hover:scale-105 transition-all text-[16px] flex font-medium after:absolute after:bottom-2 after:left-0 after:w-full after:border-b-2 after:border-b-primary-text"
-                : "text-primary-text gap-4 cursor-pointer hover:scale-105 transition-all text-[16px] flex font-medium"
+                ? "relative gap-2 hover:scale-110 text-primary-text p-2 sm:px-5 sm:py-2  rounded-full transition-all text-[20px] scale-110 flex font-base items-center navLink activeNavLink"
+                : "relative text-primary-text p-2 sm:px-5 sm:py-2 rounded-full gap-2 hover:scale-110 transition-all text-[20px] flex font-base items-center navLink"
             }
             to="/"
           >
-            <BsHouseDoor className="w-[32px] h-[32px] sm:w-[24px] sm:h-[24px]" />{" "}
+            <BsHouseDoor className="w-[32px] h-[32px] sm:w-[24px] sm:h-[24px]" />
             <p className="hidden sm:block">Home</p>
           </NavLink>
           <NavLink
             className={(navData) =>
               navData.isActive
-                ? "text-primary-color gap-4 cursor-pointer hover:scale-105 transition-all text-[16px] flex font-medium"
-                : "text-primary-text gap-4 cursor-pointer hover:scale-105 transition-all text-[16px] flex font-medium"
+                ? "relative gap-2 hover:scale-110 text-primary-text p-2 sm:px-5 sm:py-2 rounded-full transition-all text-[20px] scale-110 flex font-base items-center navLink activeNavLink"
+                : "relative text-primary-text p-2 sm:px-5 sm:py-2 rounded-full gap-2 hover:scale-110 transition-all text-[20px] flex font-base items-center navLink"
             }
             to="/themes"
           >
@@ -34,8 +41,8 @@ const NewNavbarGangGang = () => {
           <NavLink
             className={(navData) =>
               navData.isActive
-                ? "text-primary-color gap-4 cursor-pointer hover:scale-105 transition-all text-[16px] flex font-medium"
-                : "text-primary-text gap-4 cursor-pointer hover:scale-105 transition-all text-[16px] flex font-medium"
+                ? "relative gap-2 hover:scale-110 text-primary-text p-2 sm:px-5 sm:py-2 rounded-full transition-all text-[20px] scale-110 flex font-base items-center navLink activeNavLink"
+                : "relative text-primary-text p-2 sm:px-5 sm:py-2 rounded-full gap-2 hover:scale-110 transition-all text-[20px] flex font-base items-center navLink"
             }
             to="/anime"
           >
@@ -45,12 +52,12 @@ const NewNavbarGangGang = () => {
           <NavLink
             className={(navData) =>
               navData.isActive
-                ? "text-primary-color gap-4 cursor-pointer hover:scale-105 transition-all text-[16px] flex font-medium"
-                : "text-primary-text gap-4 cursor-pointer hover:scale-105 transition-all text-[16px] flex font-medium"
+                ? "relative gap-2 hover:scale-110 text-primary-text p-2 sm:px-5 sm:py-2 rounded-full transition-all text-[20px] scale-110 flex font-base items-center navLink activeNavLink"
+                : "relative text-primary-text p-2 sm:px-5 sm:py-2 rounded-full gap-2 hover:scale-110 transition-all text-[20px] flex font-base items-center navLink"
             }
             to="/contact"
           >
-            <BsHeadset className="w-[32px] h-[32px] sm:w-[24px] sm:h-[24px]" />
+            <BsHeadset className="w-[32px] h-[32px] sm:w-[25px] sm:h-[25px]" />
             <p className="hidden sm:block">Contact us</p>
           </NavLink>
         </ul>

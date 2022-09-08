@@ -87,7 +87,7 @@ const Home = () => {
         initial={{ x: -800, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ type: "spring", duration: 1 }}
-        className="flex flex-col sm:flex-row justify-between my-20"
+        className="flex flex-col sm:flex-row justify-between mt-6 mb-20 sm:mt-20"
       >
         <div className="sm:w-2/5">
           <motion.h2 className="heading">
