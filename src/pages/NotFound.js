@@ -20,8 +20,7 @@ const NotFound = () => {
           }}
           whileTap={{ scale: 0.9 }}
           onClick={() => navigate("/")}
-          className="button"
-        >
+          className="button">
           Back to home
         </motion.button>
         <img
