@@ -23,8 +23,7 @@ const AnimeCard = ({ data, error, isLoading }) => {
             className="button mt-8"
             onClick={() => {
               navigate("/anime");
-            }}
-          >
+            }}>
             Back to list
           </button>
           <img
@@ -41,13 +40,12 @@ const AnimeCard = ({ data, error, isLoading }) => {
           <p className="text-red-500 text-3xl">{data.message}</p>
           <button
             className="button bg-red-600 border-red-600 hover:text-red-600 mt-2 "
-            onClick={() => window.location.reload()}
-          >
+            onClick={() => window.location.reload()}>
             Refresh
           </button>
         </div>
       )}
-      {!isLoading && !error ? (
+      {!isLoading ? (
         <section className="sm:grid sm:grid-cols-auto-fit flex flex-col gap-6 w-full h-fit">
           {data?.data?.map((anime) => (
             <motion.article
@@ -60,18 +58,15 @@ const AnimeCard = ({ data, error, isLoading }) => {
               className="card cursor-pointer"
               onClick={() => {
                 navigate("/singleanime/" + anime.mal_id);
-              }}
-            >
+              }}>
               <div
                 className={
                   flipCards ? "card__content" : "card__content dont-flip"
-                }
-              >
+                }>
                 <div className="card__front">
                   <article
                     className="bg-[#222527] relative h-full w-[275px] flex flex-col gap-3 rounded-t-lg rounded-b-sm shadow-lg"
-                    key={anime.mal_id}
-                  >
+                    key={anime.mal_id}>
                     <img
                       className="max-w-full rounded-t-lg overflow-hidden h-[400px]"
                       src={
@@ -87,15 +82,13 @@ const AnimeCard = ({ data, error, isLoading }) => {
                       {anime.title_english ? (
                         <h2
                           title={anime.title_english}
-                          className="text-center text-white heading text-lg pt-0 font-semibold px-2 whitespace-nowrap overflow-hidden text-ellipsis"
-                        >
+                          className="text-center text-white heading text-lg pt-0 font-semibold px-2 whitespace-nowrap overflow-hidden text-ellipsis">
                           {anime.title_english}
                         </h2>
                       ) : (
                         <h2
                           title={anime.title}
-                          className="text-center text-white heading text-lg pt-0 font-semibold px-2 whitespace-nowrap overflow-hidden text-ellipsis"
-                        >
+                          className="text-center text-white heading text-lg pt-0 font-semibold px-2 whitespace-nowrap overflow-hidden text-ellipsis">
                           {anime.title}
                         </h2>
                       )}
@@ -115,8 +108,7 @@ const AnimeCard = ({ data, error, isLoading }) => {
                             : anime.score >= 6.5
                             ? "text-red-white bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
                             : "text-red-600 bg-zinc-900 p-2 rounded-xl text-xl gap-1 flex items-center"
-                        }
-                      >
+                        }>
                         <BsStarFill
                           color={
                             anime.score >= 9
