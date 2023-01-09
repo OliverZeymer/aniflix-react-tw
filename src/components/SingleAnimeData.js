@@ -23,8 +23,7 @@ const SingleAnimeData = ({
           <p className="text-red-500 text-3xl">{data.message}</p>
           <button
             className="button bg-red-600 border-red-600 hover:text-red-600 mt-2 "
-            onClick={() => window.location.reload()}
-          >
+            onClick={() => window.location.reload()}>
             Refresh
           </button>
         </div>
@@ -52,8 +51,7 @@ const SingleAnimeData = ({
                     : anime?.score >= 6.5
                     ? "text-white bg-zinc-900 p-2 rounded-xl text-2xl font-semibold gap-1 flex items-center"
                     : "text-red-600 bg-zinc-900 p-2 rounded-xl text-2xl font-semibold gap-1 flex items-center"
-                }
-              >
+                }>
                 <span className="text-yellow-500">★</span>
 
                 {anime?.score ? anime?.score.toFixed(2) : "?"}
@@ -78,7 +76,9 @@ const SingleAnimeData = ({
                 <span className="font-semibold">Genre :</span>{" "}
                 {anime.genres
                   ? anime.genres.map((genre, index) => (
-                      <span>{(index ? ", " : "") + genre.name}</span>
+                      <span key={index}>
+                        {(index ? ", " : "") + genre.name}
+                      </span>
                     ))
                   : "Unknown"}
               </p>
@@ -139,8 +139,7 @@ const SingleAnimeData = ({
                   className="text-center text-3xl"
                   href={stream.url}
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   <p className="mb-4 font-semibold underline underline-offset-2 hover:scale-110 transition-all text-center">
                     {stream.name}
                   </p>
@@ -163,8 +162,7 @@ const SingleAnimeData = ({
           </div>
           <button
             onClick={() => setShowOpenings(!showOpenings)}
-            className="hidden sm:flex items-center mb-6 mt-24 mx-auto"
-          >
+            className="hidden sm:flex items-center mb-6 mt-24 mx-auto">
             <h3 className="hidden sm:block text-2xl sm:text-4xl">
               Show Opening/Ending Songs (WIP)
             </h3>

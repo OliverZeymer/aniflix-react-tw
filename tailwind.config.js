@@ -16,7 +16,7 @@ module.exports = {
         sans: ["Poppins, sans-serif", ...defaultTheme.fontFamily.sans],
       },
       gridTemplateColumns: {
-        "auto-fit": "repeat(auto-fit, minmax(250px, 1fr));",
+        "auto-fit": "repeat(auto-fit, minmax(275px, 1fr));",
         "auto-fill": "repeat(auto-fill, minmax(0, 1fr))",
       },
       gridTemplateRows: {

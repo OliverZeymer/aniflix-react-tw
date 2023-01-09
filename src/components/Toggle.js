@@ -12,7 +12,7 @@ const Toggle = () => {
           value=""
           id="checked-toggle"
           className="sr-only peer"
-          checked={flipCards}
+          defaultChecked={flipCards}
           onClick={() => {
             setFlipCards(!flipCards);
           }}

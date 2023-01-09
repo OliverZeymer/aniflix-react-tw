@@ -14,17 +14,14 @@ const SelectFilters = ({ status, page, order, search, params }) => {
       <div className="w-full flex flex-col items-center sm:block">
         <label
           htmlFor="filter"
-          className="mb-2 sm:mb-0 text-xl font-medium text-white"
-        >
+          className="mb-2 sm:mb-0 text-xl font-medium text-white">
           Filter
         </label>
         <select
-          defaultValue="members"
           onChange={(event) => handleOrderChange(event)}
-          value={order}
+          value={order ? order : "members"}
           id="filter orderlist"
-          className="border border-gray-300 bg-[#222527] text-white mb-4 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
-        >
+          className="border border-gray-300 bg-[#222527] text-white mb-4 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5">
           <option value="members">Viewers</option>
           <option value="score">Score</option>
           <option value="episodes">Episodes</option>
@@ -35,12 +32,10 @@ const SelectFilters = ({ status, page, order, search, params }) => {
           Status
         </label>
         <select
-          defaultValue="all"
           onChange={(event) => handleStatusChange(event)}
-          value={status}
+          value={status ? status : "all"}
           id="filter statuslist"
-          className="border border-gray-300 bg-[#222527] text-white mb-4 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5"
-        >
+          className="border border-gray-300 bg-[#222527] text-white mb-4 sm:mb-0 text-sm rounded-lg focus:ring-white focus:border-white block w-2/4 sm:w-full p-2.5">
           <option value="all">All</option>
           <option value="complete">Complete</option>
           <option value="airing">Airing</option>
