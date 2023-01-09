@@ -3,7 +3,7 @@ import { BsFillPlayFill, BsStarFill, BsArrowRight } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import flipCardsContext from "../contexts/flipCardsContext";
+import flipCardsContext from "../../contexts/flipCardsContext";
 import Loader from "./Loader";
 const AnimeCard = ({ data, error, isLoading }) => {
   const { flipCards } = useContext(flipCardsContext);

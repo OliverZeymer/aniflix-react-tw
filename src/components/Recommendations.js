@@ -17,8 +17,7 @@ const Recommendations = ({ id }) => {
           <p className="text-red-500 text-3xl">{data.message}</p>
           <button
             className="button bg-red-600 border-red-600 hover:text-red-600 mt-2"
-            onClick={() => window.location.reload()}
-          >
+            onClick={() => window.location.reload()}>
             Refresh
           </button>
         </div>
@@ -34,8 +33,7 @@ const Recommendations = ({ id }) => {
                   className="flex flex-col items-center cursor-pointer transform transition duration-200 relative md:p-2 hover:scale-95 hover:text-primary-text"
                   onClick={() => {
                     navigate("/singleanime/" + anime.entry.mal_id);
-                  }}
-                >
+                  }}>
                   <img
                     className="rounded poster shadow-lg w-[200px] h-[300px]"
                     src={anime.entry.images.webp.large_image_url}

@@ -87,8 +87,7 @@ const Home = () => {
         initial={{ x: -800, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ type: "spring", duration: 1 }}
-        className="flex flex-col sm:flex-row justify-between my-20"
-      >
+        className="flex flex-col sm:flex-row justify-between my-20">
         <div className="sm:w-2/5">
           <motion.h2 className="heading">
             AniFlix - The anime library for all your needs
@@ -106,8 +105,7 @@ const Home = () => {
               transition: { duration: 0.1 },
             }}
             whileTap={{ scale: 0.9 }}
-            className="button mx-auto sm:mx-0 mb-12 sm:mb-0"
-          >
+            className="button mx-auto sm:mx-0 mb-12 sm:mb-0">
             Take me there
             <BsArrowUpRight className="hover:text-primary-color" />
           </motion.button>
@@ -141,8 +139,7 @@ const Home = () => {
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+          allowFullScreen></iframe>
       </section>
 
       <ServicesSection />
@@ -163,8 +160,7 @@ const Home = () => {
               transition: { duration: 0.1 },
             }}
             whileTap={{ scale: 0.9 }}
-            className="button"
-          >
+            className="button">
             Contact Us
           </motion.div>
         </Link>
