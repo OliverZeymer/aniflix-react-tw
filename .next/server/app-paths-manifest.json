@@ -1,3 +1,4 @@
 {
-  "/anime/page": "app/anime/page.js"
+  "/anime/page": "app/anime/page.js",
+  "/page": "app/page.js"
 }
