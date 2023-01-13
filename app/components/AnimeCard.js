@@ -2,12 +2,9 @@ import { motion } from "framer-motion";
 import { BsFillPlayFill, BsStarFill, BsArrowRight } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import flipCardsContext from "../../contexts/flipCardsContext";
+import flipCardsContext from "../contexts/flipCardsContext";
 import Loader from "./Loader";
 const AnimeCard = ({ data, error, isLoading }) => {
-  const { flipCards } = useContext(flipCardsContext);
-
   const variants = {
     hidden: { scale: 0.9, opacity: 0 },
     enter: { scale: 1, opacity: 1 },
@@ -59,10 +56,7 @@ const AnimeCard = ({ data, error, isLoading }) => {
               onClick={() => {
                 navigate("/singleanime/" + anime.mal_id);
               }}>
-              <div
-                className={
-                  flipCards ? "card__content" : "card__content dont-flip"
-                }>
+              <div className="card__content">
                 <div className="card__front">
                   <article
                     className="bg-[#222527] relative h-full w-[275px] flex flex-col gap-3 rounded-t-lg rounded-b-sm shadow-lg"
