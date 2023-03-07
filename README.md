@@ -10,7 +10,7 @@ If you simply want to experience the website [Press Here](https://aniflix-librar
 3. Run the development server:
 
 ```bash
-npm run dev
+npm run start
 ```
 
 4. Open http://localhost:3000 to view it in your browser
